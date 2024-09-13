@@ -130,11 +130,11 @@
 
 
 
-  .home-sec-01 .text h2 {
-  color: white;
+.home-sec-01 .text h2 {
+  color: #ff0000;
   font-size: 30px;
   font-weight: 500;
-  }
+}
 
   .home-sec-01 .text h1 {
   color: white;
