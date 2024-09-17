@@ -3,6 +3,9 @@
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\DashboardController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+// WEBSITE ROUTES
 Route::get('/',[WebController::class,'index'])->name('index');
 Route::get('/about',[WebController::class,'about'])->name('about');
 Route::get('/help',[WebController::class,'help'])->name('help');
@@ -31,3 +35,10 @@ Route::get('/rentahome',[WebController::class,'rentahome'])->name('rentahome');
 Route::get('/info',[WebController::class,'info'])->name('info');
 Route::get('/login',[WebController::class,'login'])->name('login');
 Route::get('/register',[WebController::class,'register'])->name('register');
+
+// Dashboard Routes
+Route::prefix('tenant')->name('tenant.')->group(function () {
+    Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
+    Route::get('/properties',[DashboardController::class,'properties'])->name('properties');
+});
+

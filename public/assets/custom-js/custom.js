@@ -11,7 +11,7 @@ arr.map(function(item){
   function counterup(){
   startnumber++
   item.innerHTML= startnumber
-   
+
   if(startnumber == item.dataset.number){
       clearInterval(stop)
   }
@@ -20,7 +20,7 @@ arr.map(function(item){
 let stop =setInterval(function(){
   counterup()
 },0.1)
-  
+
 })
 
 // Automatically toggle the plus/minus icon when the accordion is opened or closed
@@ -34,3 +34,14 @@ document.querySelectorAll('.accordion-button').forEach(button => {
     }
   });
 });
+
+  // Select all anchor elements with the class 'heart-link'
+  const heartLinks = document.querySelectorAll('.heart-link');
+
+  // Loop through each anchor and add a click event listener
+  heartLinks.forEach(function(heartLink) {
+    heartLink.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent default anchor behavior
+      this.classList.toggle('heart-active'); // Toggle the class 'heart-active' for the clicked anchor
+    });
+  });

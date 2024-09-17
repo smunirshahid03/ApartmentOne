@@ -7,11 +7,11 @@
             <div class="col-md-12">
                 <div class="text">
                     <h2>Privacy Policy /  Terms & Conditions </h2>
-                    <h1>Privacy Policies + Terms<br> & Conditions</h1>      
+                    <h1>Privacy Policies + Terms<br> & Conditions</h1>
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 </section>
 
 <section class="info-sec-01">
