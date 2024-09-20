@@ -15,4 +15,20 @@ class DashboardController extends Controller
     {
         return view('Dashboard.tenant.properties');
     }
+    public function propertieslistings()
+    {
+        return view('Dashboard.tenant.propertieslistings');
+    }
+
+    public function applyhistory()
+    {
+        return view('Dashboard.tenant.applyhistory');
+    }
+
+    public function profile()
+    {
+        return view('Dashboard.tenant.profile');
+    }
 }
+
+

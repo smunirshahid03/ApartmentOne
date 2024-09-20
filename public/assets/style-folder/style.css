@@ -1411,7 +1411,284 @@ margin: 0;
     text-decoration: none;
 }
 
+.properties-page .main-parent-place-box .child-place-box {
+    width: 19%;
+}
 
+.properties-page .main-parent-place-box .child-place-box .some-align .content-box .price-month h6 {
+    font-size: 17px;
+}
+
+.properties-page .main-parent-place-box .child-place-box .some-align .content-box .place-name h5 {
+    font-size: 17px;
+}
+
+.properties-page .main-parent-place-box .child-place-box .some-align .content-box .place-location p {
+    font-size: 11px;
+}
+
+.properties-page .two-things-align ul.nav.nav-tabs {
+    border: none;
+    display: flex;
+    column-gap: 15px;
+}
+
+.properties-page .two-things-align ul.nav.nav-tabs a.nav-link {
+    background-color: #CCCCCC;
+    color: #666666;
+    border-radius: 50px;
+    border: none;
+    font-size: 15px;
+    transition: .3s;
+}
+
+.properties-page .two-things-align ul.nav.nav-tabs a.nav-link.active,.properties-page .two-things-align ul.nav.nav-tabs a.nav-link:hover {
+    background-color: #0077B6;
+    color: white;
+}
+.propertieslistings-page .place-gallery-box {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+.propertieslistings-page .place-gallery-box .large-gallery-box a,.propertieslistings-page .place-gallery-box .large-gallery-box a img {
+    width: 100%;
+    height: 100%;
+}
+
+.propertieslistings-page .place-gallery-box .small-gallery-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.propertieslistings-page .place-gallery-box .small-gallery-box a {
+    width: 31%;
+}
+
+.propertieslistings-page .place-gallery-box .small-gallery-box a img {
+    width: 100%;
+    height: 100%;
+}
+
+.propertieslistings-page .place-gallery-box .proper-list-price h3 {
+    font-size: 30px;
+    color: #414141;
+    font-weight: 800;
+}
+
+.propertieslistings-page .properties_details_main {}
+
+.propertieslistings-page .properties_details_main .properties_name_add {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.propertieslistings-page .properties_details_main .properties_name_add .name h5 {
+    font-size: 30px;
+    color: #414141;
+    font-weight: 800;
+    max-width: 400px;
+}
+
+.propertieslistings-page .properties_details_main .properties_name_add .add a {
+    background-color: #0077B6;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+}
+
+.propertieslistings-page .properties_details_main .properties_name_add .add a:hover {
+    background-color: black;
+}
+
+.propertieslistings-page .properties_details_main .properties-icons-details ul {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px !important;
+}
+
+.propertieslistings-page .properties_details_main .properties-icons-details ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-right: 1px solid #0000002b;
+    padding-right: 30px;
+    line-height: 0em;
+}
+
+.propertieslistings-page .properties_details_main .properties-icons-details ul li:last-child {
+    border: none;
+}
+
+.propertieslistings-page .properties_details_main .properties-content-style h6 {
+    color: #414141;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 15px 0 10px;
+}
+
+.propertieslistings-page .properties_details_main .properties-content-style p {
+    font-size: 20px;
+    color: #666666;
+}
+
+.propertieslistings-page .properties_details_main .properties-content-style {
+    border-bottom: 1px solid #00000038;
+    padding-bottom: 20px;
+    margin-bottom: 20px !important;
+}
+
+.propertieslistings-page .properties_details_main .properties-content-style .prop-owner-with-img-align {
+    display: flex;
+    gap: 40px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.propertieslistings-page .properties_details_main .properties-content-style .prop-owner-with-img-align .content h2 {
+    color: #666666;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.propertieslistings-page .properties_details_main .properties-content-style .prop-owner-with-img-align .content p {
+    font-size: 15px;
+    color: #888888;
+}
+
+.propertieslistings-page .properties_details_main .properties-content-style .prop-owner-with-img-align .img-box {
+    width: 20%;
+    height: 150px;
+}
+
+.propertieslistings-page .properties_details_main .properties-content-style .prop-owner-with-img-align .content {
+    width: 80%;
+}
+
+.propertieslistings-page .properties_details_main .properties-content-style .owner-details-links ul {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0 !important;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.propertieslistings-page .properties_details_main .properties-content-style .owner-details-links ul li a {
+    display: flex;
+    gap: 15px;
+    color: #777777;
+    font-size: 20px;
+    text-decoration: none;
+    align-items: center;
+    transition: .3s;
+    justify-content: flex-start;
+}
+
+.propertieslistings-page .properties_details_main .properties-content-style .owner-details-links ul li a:hover {
+    color: #0077B6;
+}
+
+.propertieslistings-page .properties_details_main .properties-content-style .owner-details-links ul li a:hover svg path {
+    fill: #0077b6;
+}
+
+.propertieslistings-page .properties_details_main .properties-content-style:last-child {
+    border: none;
+}
+.profile-page {}
+
+.profile-page .profile-basic-info-form h3 {color: #414141;font-size: 30px;font-weight: 600;}
+
+.profile-page .profile-basic-info-form form {
+    width: 100%;
+}
+
+.profile-page .profile-basic-info-form form .two-inputs-boxes-align {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.profile-page .profile-basic-info-form form .two-inputs-boxes-align .input-box {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 5px;
+}
+
+.profile-page .profile-basic-info-form form .two-inputs-boxes-align .input-box label {
+    color: #777777;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.profile-page .profile-basic-info-form form .two-inputs-boxes-align .input-box input {
+    background-color: #E5E5E5;
+    height: 45px;
+    border-radius: 10px;
+    border: 1px solid #0000003d;
+    padding: 10px;
+    color: #666666;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.profile-page .profile-basic-info-form form  .two-btn-align-sub-del {
+    display: flex;
+    column-gap: 30px;
+}
+
+.profile-page .profile-basic-info-form form .two-btn-align-sub-del button.form-btn {
+    background-color: #0077B6;
+    padding: 12px 30px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    font-size: 17px;
+    font-weight: 500;
+    transition: .3s;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.profile-page .profile-basic-info-form form .two-btn-align-sub-del button.form-btn:last-child {
+    background-color: #777777;
+}
+
+.profile-page .profile-basic-info-form form .two-btn-align-sub-del button.form-btn:hover {
+    background-color: black;
+    color: white;
+}
+
+
+.profile-page .profile-basic-info-form .bank-info-box {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #00000038;
+}
 /* Dashboard-css-end */
 
 @media (min-width: 1400px) {

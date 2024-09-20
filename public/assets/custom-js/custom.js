@@ -45,3 +45,18 @@ document.querySelectorAll('.accordion-button').forEach(button => {
       this.classList.toggle('heart-active'); // Toggle the class 'heart-active' for the clicked anchor
     });
   });
+
+  // Fancybox Config
+$('[data-fancybox="gallery"]').fancybox({
+    buttons: [
+      "slideShow",
+      "thumbs",
+      "zoom",
+      "fullScreen",
+      "share",
+      "close"
+    ],
+    loop: false,
+    protect: true
+  });
+

@@ -40,5 +40,9 @@ Route::get('/register',[WebController::class,'register'])->name('register');
 Route::prefix('tenant')->name('tenant.')->group(function () {
     Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
     Route::get('/properties',[DashboardController::class,'properties'])->name('properties');
+    Route::get('/propertieslistings',[DashboardController::class,'propertieslistings'])->name('propertieslistings');
+    Route::get('/applyhistory',[DashboardController::class,'applyhistory'])->name('applyhistory');
+    Route::get('/profile',[DashboardController::class,'profile'])->name('profile');
 });
+
 
