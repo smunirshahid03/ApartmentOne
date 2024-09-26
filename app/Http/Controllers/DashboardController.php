@@ -29,6 +29,22 @@ class DashboardController extends Controller
     {
         return view('Dashboard.tenant.profile');
     }
+
+    public function wishlist()
+    {
+        return view('Dashboard.tenant.wishlist');
+    }
+
+
+    public function notifications()
+    {
+        return view('Dashboard.tenant.notifications');
+    }
+
+    public function messages()
+    {
+        return view('Dashboard.tenant.messages');
+    }
 }
 
 

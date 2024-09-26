@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\DashboardController;
 
 
@@ -43,6 +42,9 @@ Route::prefix('tenant')->name('tenant.')->group(function () {
     Route::get('/propertieslistings',[DashboardController::class,'propertieslistings'])->name('propertieslistings');
     Route::get('/applyhistory',[DashboardController::class,'applyhistory'])->name('applyhistory');
     Route::get('/profile',[DashboardController::class,'profile'])->name('profile');
+    Route::get('/wishlist',[DashboardController::class,'wishlist'])->name('wishlist');
+    Route::get('/notifications',[DashboardController::class,'notifications'])->name('notifications');
+    Route::get('/messages',[DashboardController::class,'messages'])->name('messages');
 });
 
 
