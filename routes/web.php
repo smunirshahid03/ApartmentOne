@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WebController;
+use App\Http\Controllers\Auth\AuhController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\TenantAuthController;
 
 
 /*
@@ -32,12 +34,17 @@ Route::get('/services',[WebController::class,'services'])->name('services');
 Route::get('/seekingahome',[WebController::class,'seekingahome'])->name('seekingahome');
 Route::get('/rentahome',[WebController::class,'rentahome'])->name('rentahome');
 Route::get('/info',[WebController::class,'info'])->name('info');
+// guest
 Route::get('/login',[WebController::class,'login'])->name('login');
 Route::get('/register',[WebController::class,'register'])->name('register');
+Route::post('/register/store',[AuhController::class,'register'])->name('register.store');
+Route::post('/login/store',[AuhController::class,'login'])->name('login.store');
+Route::post('/logout',[AuhController::class,'logout'])->name('logout');
 
 // Dashboard Routes
 Route::prefix('tenant')->name('tenant.')->group(function () {
-    Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
+    Route::middleware(['role:tenant'])->group(function () {
+    Route::get('/dashboard',[TenantAuthController::class,'dashboard'])->name('dashboard');
     Route::get('/properties',[DashboardController::class,'properties'])->name('properties');
     Route::get('/propertieslistings',[DashboardController::class,'propertieslistings'])->name('propertieslistings');
     Route::get('/applyhistory',[DashboardController::class,'applyhistory'])->name('applyhistory');
@@ -45,6 +52,12 @@ Route::prefix('tenant')->name('tenant.')->group(function () {
     Route::get('/wishlist',[DashboardController::class,'wishlist'])->name('wishlist');
     Route::get('/notifications',[DashboardController::class,'notifications'])->name('notifications');
     Route::get('/messages',[DashboardController::class,'messages'])->name('messages');
+    // profile
+    Route::get('/profile',[TenantAuthController::class,'profile'])->name('profile');
+    Route::post('/profile/update', [TenantAuthController::class, 'updateProfile'])->name('profile.update');
+    //  Bank Info
+    Route::post('/bank', [TenantAuthController::class, 'bank'])->name('bank');
+});
 });
 
 

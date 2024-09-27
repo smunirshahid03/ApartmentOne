@@ -11,9 +11,21 @@
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the<br> industry's standard dummy text ever since the 1500s.</p>
                 </div>
                 <div class="form-box">
-                    <form>
-                        <input type="email" placeholder="Email Address" required>
-                        <input type="password" placeholder="Password" required>
+                    <div>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    </div>
+                    <form action="{{ route('login.store') }}" method="POST">
+                        @csrf
+                        <input type="email" placeholder="Email Address" required name="email">
+                        <input type="password" placeholder="Password" required name="password">
                         <div class="forms-btns-inline">
                             <button>Login</button>
                             <a href="{{ route('register') }}">Create a New Account</a>

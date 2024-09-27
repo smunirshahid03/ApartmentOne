@@ -1,21 +1,33 @@
 @extends('Dashboard.Layouts.master_dashboard')
+
+<style>
+            .dashboard-main .left-panel .left-panel-menu ul li a.dashboard-active  {
+            background-color: white;
+            color: #414141;
+        }
+
+        .dashboard-main .left-panel .left-panel-menu ul li a.dashboard-active svg path  {
+            fill: #414141 !important;
+        }
+</style>
+
 @section('content')
 <div class="row">
     <div class="col-lg-4">
         <div class="detailed-user-box">
             <div class="user-img-box">
-                <img src="{{ asset('assets/images/user-profile-image.png') }}" alt="">
-                <h5>Julie Watson</h5>
+                <img src="{{  Storage::url(auth()->user()->profile_img ?? '') }}" alt="">
+                <h5>{{ Auth::user()->name ? Auth::user()->name : '' }}</h5>
             </div>
             <div class="user-more-details">
                 <ul>
-                    <li>Age : 25</li>
-                    <li>City : Chicago</li>
-                    <li>State : New York</li>
-                    <li>Country : USA</li>
-                    <li>Postal Code : 1001</li>
-                    <li>Phone : +921 0055 220053</li>
-                    <li>Email Address : julie@example.com</li>
+                    <li>Age : {{ $user->age ?? '' }}</li>
+                    <li>City : {{ $user->city ?? '' }}</li>
+                    <li>State : {{ $user->state ?? '' }}</li>
+                    <li>Country : {{ $user->country ?? '' }}</li>
+                    <li>Postal Code : {{ $user->postal_code ?? '' }}</li>
+                    <li>Phone : {{ $user->phone ?? '' }}</li>
+                    <li>Email Address : {{ $user->email ?? '' }}</li>
                 </ul>
             </div>
         </div>
