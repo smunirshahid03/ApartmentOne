@@ -5,6 +5,7 @@ use App\Http\Controllers\WebController;
 use App\Http\Controllers\Auth\AuhController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\TenantAuthController;
+use App\Http\Controllers\Auth\LandlordAuthController;
 
 
 /*
@@ -58,6 +59,12 @@ Route::prefix('tenant')->name('tenant.')->group(function () {
     //  Bank Info
     Route::post('/bank', [TenantAuthController::class, 'bank'])->name('bank');
 });
+});
+
+
+// Landlord Routes
+Route::prefix('landlord')->name('landlord.')->group(function () {
+    Route::get('/dashboard',[LandlordAuthController::class,'dashboard'])->name('landlord.dashboard');
 });
 
 

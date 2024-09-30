@@ -66,7 +66,7 @@ public function login(Request $request)
             } else if(Auth::user()->hasRole('tenant')) {
                 return redirect()->route('tenant.dashboard');
             } else if(Auth::user()->hasRole('land_lord')) {
-                return redirect()->route('user.dashboard');
+                return redirect()->route('landlord.dashboard');
             }
             else {
                 Auth::logout(); // Log out if not an admin
@@ -82,5 +82,5 @@ public function login(Request $request)
         Auth::logout();
         return redirect()->route('login');
     }
-    
+
 }

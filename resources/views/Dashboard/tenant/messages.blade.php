@@ -141,6 +141,7 @@
                                         </div>
                                         <p>Lorem Ipsum is simply dummy text of the</p>
                                     </div>
+
                                     <div class="content-box client">
                                         <div class="name-and-date">
                                             <h6>Jhon Wick</h6>
@@ -148,6 +149,7 @@
                                         </div>
                                         <p>Lorem Ipsum is simply dummy text of the</p>
                                     </div>
+                                    
                                     <div class="content-box you">
                                         <div class="name-and-date">
                                             <h6>Jhon Wick</h6>

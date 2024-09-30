@@ -1940,6 +1940,121 @@
             }
             /* Dashboard-css-end */
 
+
+            /* landlord-css-start */
+
+
+
+            .landlord-dashboard .reports-fours-box-align {
+                display: flex;
+                gap: 25px;
+                margin: 25px 0px 50px 0px;
+            }
+
+.landlord-dashboard .reports-fours-box-align .parent-box {
+    display: flex;
+    background-color: #E5E5E5;
+    border: 1px solid #00000029;
+    border-radius: 10px;
+    padding: 15px;
+    align-items: center;
+    gap: 20px;
+}
+
+.landlord-dashboard .reports-fours-box-align .parent-box .content h5 {
+    color: #003170;
+    font-size: 45px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 0.9;
+}
+
+.landlord-dashboard .reports-fours-box-align .parent-box .content p {
+    color: #555555;
+    font-size: 12px;
+}
+
+.landlord-dashboard .reports-fours-box-align .parent-box .content {
+    max-width: 150px;
+    width: 150px;
+}
+
+.text h5 {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.landlord-dashboard {}
+
+.landlord-dashboard .reports-listings-property-table {}
+
+.landlord-dashboard .reports-listings-property-table .three-headings-align {
+    display: flex;
+    background-color: #E5E5E5;
+    border-radius: 10px;
+    padding: 15px 20px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.landlord-dashboard .reports-listings-property-table .three-headings-align h3 {
+    color: #414141;
+    font-size: 20px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.landlord-dashboard .reports-listings-property-table .three-box-table {
+    background-color: #EFEFEF;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border: 1px solid #00000021;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.landlord-dashboard .reports-listings-property-table .three-box-table .box.img-box-property {
+    display: flex;
+}
+
+.landlord-dashboard .reports-listings-property-table .three-box-table .box.img-box-property img {
+    width: 70px;
+    height: 70px;
+    border: 2px solid #0077B6;
+    border-radius: 10px;
+}
+
+.landlord-dashboard .reports-listings-property-table .three-box-table .box.img-box-property {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.landlord-dashboard .reports-listings-property-table .three-box-table .box.img-box-property .content {
+    width: 320px;
+}
+
+.landlord-dashboard .reports-listings-property-table .three-box-table .box.img-box-property .content h4 {
+    color: #414141;
+    margin: auto;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.landlord-dashboard .reports-listings-property-table .three-box-table .box.img-box-property .content p {
+    font-size: 17px;
+    color: #414141;
+}
+
+.landlord-dashboard .reports-listings-property-table .three-box-table .box {
+    width: 24%;
+}
+
+
+            /* landlord-css-end */
+
             @media (min-width: 1400px) {
             .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
                 max-width: 1420px;
