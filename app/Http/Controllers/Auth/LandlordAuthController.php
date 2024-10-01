@@ -14,4 +14,17 @@ class LandlordAuthController extends Controller
         return view('Dashboard.landlord.dashboard');
     }
 
+
+
+    public function properties()
+    {
+        return view('Dashboard.landlord.properties');
+    }
+
+    public function add_property()
+    {
+        return view('Dashboard.landlord.add_property');
+    }
+
+
 }

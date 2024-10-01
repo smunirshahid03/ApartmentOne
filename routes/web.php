@@ -44,7 +44,7 @@ Route::post('/logout',[AuhController::class,'logout'])->name('logout');
 
 // Dashboard Routes
 Route::prefix('tenant')->name('tenant.')->group(function () {
-    Route::middleware(['role:tenant'])->group(function () {
+    // Route::middleware(['role:tenant'])->group(function () {
     Route::get('/dashboard',[TenantAuthController::class,'dashboard'])->name('dashboard');
     Route::get('/properties',[DashboardController::class,'properties'])->name('properties');
     Route::get('/propertieslistings',[DashboardController::class,'propertieslistings'])->name('propertieslistings');
@@ -58,13 +58,15 @@ Route::prefix('tenant')->name('tenant.')->group(function () {
     Route::post('/profile/update', [TenantAuthController::class, 'updateProfile'])->name('profile.update');
     //  Bank Info
     Route::post('/bank', [TenantAuthController::class, 'bank'])->name('bank');
-});
+// });
 });
 
 
 // Landlord Routes
 Route::prefix('landlord')->name('landlord.')->group(function () {
     Route::get('/dashboard',[LandlordAuthController::class,'dashboard'])->name('landlord.dashboard');
+    Route::get('/properties',[LandlordAuthController::class,'properties'])->name('landlord.properties');
+    Route::get('/add_property',[LandlordAuthController::class,'add_property'])->name('landlord.add_property');
 });
 
 

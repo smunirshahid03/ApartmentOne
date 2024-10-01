@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -35,10 +37,11 @@
                         <div class="left-panel-menu">
                             <div class="panel-box">
                                 <h5>Menu</h5>
-                                @if (Auth::user()->hasRole('tenant'))
+                                {{-- @if (Auth::user()->hasRole('tenant')) --}}
                                 <ul>
-                                    <li><a href="{{ route('tenant.dashboard') }}" class="dashboard-active"><svg width="30" height="30" viewBox="0 0 30 30"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <li><a href="{{ route('tenant.dashboard') }}" class="dashboard-active"><svg
+                                                width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M15.3794 5.27637C8.4869 5.27637 2.8794 10.8839 2.8794 17.7764C2.87778 19.7056 3.32769 21.6084 4.19315 23.3326C4.40565 23.7576 4.83815 24.0264 5.3119 24.0264H25.4456C25.9194 24.0264 26.3531 23.7576 26.5656 23.3326C27.4311 21.6084 27.881 19.7056 27.8794 17.7764C27.8794 10.8839 22.2719 5.27637 15.3794 5.27637ZM24.6419 21.5264H6.1169C5.62844 20.3366 5.37789 19.0625 5.3794 17.7764C5.3794 12.2626 9.86565 7.77637 15.3794 7.77637C20.8931 7.77637 25.3794 12.2626 25.3794 17.7764C25.3809 19.0625 25.1304 20.3366 24.6419 21.5264Z"
                                                     fill="white" />
@@ -47,8 +50,9 @@
                                                     fill="white" />
                                             </svg>
                                             Dashboard</a></li>
-                                    <li><a href="{{ route('tenant.properties') }}" class="properties-active"><svg width="31" height="30" viewBox="0 0 31 30"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <li><a href="{{ route('tenant.properties') }}" class="properties-active"><svg
+                                                width="31" height="30" viewBox="0 0 31 30" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M24.6716 2.44946H12.1716C10.7929 2.44946 9.67161 3.57071 9.67161 4.94946V11.932L3.78786 17.8157C3.6131 17.9905 3.49409 18.2132 3.44588 18.4557C3.39767 18.6981 3.42242 18.9494 3.51701 19.1778C3.6116 19.4062 3.77177 19.6014 3.97729 19.7387C4.1828 19.8761 4.42442 19.9494 4.67161 19.9495V26.1995C4.67161 26.531 4.8033 26.8489 5.03773 27.0833C5.27215 27.3178 5.59009 27.4495 5.92161 27.4495H25.9216C26.2531 27.4495 26.5711 27.3178 26.8055 27.0833C27.0399 26.8489 27.1716 26.531 27.1716 26.1995V4.94946C27.1716 3.57071 26.0504 2.44946 24.6716 2.44946ZM14.6716 24.9495H7.17161V17.967L10.9216 14.217L14.6716 17.967V24.9495ZM24.6716 24.9495H17.1716V19.9495C17.4191 19.95 17.6611 19.877 17.867 19.7398C18.0729 19.6025 18.2334 19.4072 18.3281 19.1786C18.4228 18.9499 18.4474 18.6983 18.3988 18.4557C18.3503 18.213 18.2307 17.9903 18.0554 17.8157L12.1716 11.932V4.94946H24.6716V24.9495Z"
                                                     fill="white" />
@@ -57,8 +61,9 @@
                                                     fill="white" />
                                             </svg>
                                             Properties</a></li>
-                                    <li><a href="{{ route('tenant.applyhistory') }}" class="applyhistory-active"><svg width="31" height="30" viewBox="0 0 31 30"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <li><a href="{{ route('tenant.applyhistory') }}" class="applyhistory-active"><svg
+                                                width="31" height="30" viewBox="0 0 31 30" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M25.3787 10.7325C25.3195 10.5968 25.2365 10.4728 25.1338 10.3663L17.6337 2.86625C17.5272 2.76348 17.4032 2.68051 17.2675 2.62125C17.23 2.60375 17.19 2.59375 17.15 2.58C17.0454 2.54441 16.9365 2.52297 16.8262 2.51625C16.8 2.51375 16.7762 2.5 16.75 2.5H8C6.62125 2.5 5.5 3.62125 5.5 5V25C5.5 26.3788 6.62125 27.5 8 27.5H23C24.3788 27.5 25.5 26.3788 25.5 25V11.25C25.5 11.2238 25.4862 11.2 25.4837 11.1725C25.4776 11.0621 25.4562 10.9532 25.42 10.8487C25.4075 10.8087 25.3962 10.77 25.3787 10.7325ZM21.2325 10H18V6.7675L21.2325 10ZM8 25V5H15.5V11.25C15.5 11.5815 15.6317 11.8995 15.8661 12.1339C16.1005 12.3683 16.4185 12.5 16.75 12.5H23L23.0025 25H8Z"
                                                     fill="white" />
@@ -67,8 +72,9 @@
                                                     fill="white" />
                                             </svg>
                                             Apply History</a></li>
-                                    <li><a href="{{ route('tenant.profile') }}" class="profile-active"><svg width="31" height="30" viewBox="0 0 31 30"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <li><a href="{{ route('tenant.profile') }}" class="profile-active"><svg
+                                                width="31" height="30" viewBox="0 0 31 30" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M15.231 2.01758C11.9288 2.05969 8.77383 3.39017 6.43869 5.72531C4.10355 8.06045 2.77307 11.2155 2.73096 14.5176C2.74639 16.4412 3.20561 18.3353 4.07285 20.0525C4.94009 21.7696 6.19195 23.2634 7.73096 24.4176V24.5176H7.85596C9.97244 26.1394 12.5645 27.0184 15.231 27.0184C17.8974 27.0184 20.4895 26.1394 22.606 24.5176H22.731V24.4176C24.27 23.2634 25.5218 21.7696 26.3891 20.0525C27.2563 18.3353 27.7155 16.4412 27.731 14.5176C27.6888 11.2155 26.3584 8.06045 24.0232 5.72531C21.6881 3.39017 18.5331 2.05969 15.231 2.01758ZM10.3185 23.1801C10.5009 22.3444 10.9636 21.5962 11.6298 21.0596C12.296 20.523 13.1256 20.2303 13.981 20.2301H16.481C17.3363 20.2303 18.1659 20.523 18.8321 21.0596C19.4983 21.5962 19.961 22.3444 20.1435 23.1801C18.6545 24.0561 16.9585 24.518 15.231 24.518C13.5035 24.518 11.8074 24.0561 10.3185 23.1801ZM22.2435 21.5676C21.768 20.4313 20.9674 19.4608 19.9421 18.778C18.9169 18.0953 17.7127 17.7307 16.481 17.7301H13.981C12.7492 17.7307 11.545 18.0953 10.5198 18.778C9.49456 19.4608 8.69392 20.4313 8.21846 21.5676C7.28179 20.6463 6.53583 19.5495 6.02322 18.3398C5.51061 17.1302 5.2414 15.8313 5.23096 14.5176C5.26338 11.8755 6.32736 9.35074 8.19574 7.48236C10.0641 5.61398 12.5889 4.55 15.231 4.51758C17.873 4.55 20.3978 5.61398 22.2662 7.48236C24.1346 9.35074 25.1985 11.8755 25.231 14.5176C25.2205 15.8313 24.9513 17.1302 24.4387 18.3398C23.9261 19.5495 23.1801 20.6463 22.2435 21.5676Z"
                                                     fill="white" />
@@ -78,7 +84,7 @@
                                             </svg>
                                             Profile</a></li>
                                 </ul>
-                                @endif
+                                {{-- @endif --}}
 
                             </div>
                             <div class="panel-box">
@@ -88,9 +94,9 @@
                                     @csrf
                                 </form>
                                 <a href="#"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"  class="t-btn t-btn-blue t-btn-svg"><svg
-                                        width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                    class="t-btn t-btn-blue t-btn-svg"><svg width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M16 13V11H7V8L2 12L7 16V13H16Z" fill="white" />
                                         <path
                                             d="M20 3H11C9.897 3 9 3.897 9 5V9H11V5H20V19H11V15H9V19C9 20.103 9.897 21 11 21H20C21.103 21 22 20.103 22 19V5C22 3.897 21.103 3 20 3Z"
@@ -109,7 +115,7 @@
                     <div class="main-dashboard-header">
                         <div class="page-detail-box">
                             <p>Welcome</p>
-                            <h6>{{ Auth::user()->name }}</h6>
+                            {{-- <h6>{{ Auth::user()->name }}</h6> --}}
                         </div>
                         <div class="right-header-links">
                             <ul>
@@ -138,7 +144,7 @@
                                         </svg>
                                         Messages</a></li>
                                 <li><a href="#" class="user-profile-link"><img
-                                            src="{{  Storage::url(auth()->user()->profile_img ?? '') }}"
+                                            src="{{ Storage::url(auth()->user()->profile_img ?? '') }}"
                                             alt="">{{ $user->name ?? '' }}</a></li>
                             </ul>
                         </div>
@@ -151,15 +157,13 @@
 
     </section>
 
-
-
-
-
-
     <script src="{{ asset('assets/custom-js/custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+    <!-- Load Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </body>
 
 </html>

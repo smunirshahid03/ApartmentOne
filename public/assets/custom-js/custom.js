@@ -61,7 +61,7 @@ $('[data-fancybox="gallery"]').fancybox({
   });
 
 
-  
+
 
 
 

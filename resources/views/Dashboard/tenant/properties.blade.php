@@ -9,9 +9,10 @@
         .dashboard-main .left-panel .left-panel-menu ul li a.properties-active svg path  {
             fill: #414141 !important;
         }
+
 </style>
 
-    
+
 @section('content')
 <div class="properties-page">
     <div class="row">
