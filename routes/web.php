@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuhController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\TenantAuthController;
 use App\Http\Controllers\Auth\LandlordAuthController;
+use App\Http\Controllers\LandLord\PropertyController;
 
 
 /*
@@ -66,8 +67,13 @@ Route::prefix('tenant')->name('tenant.')->group(function () {
 Route::prefix('landlord')->name('landlord.')->group(function () {
     Route::middleware(['role:land_lord'])->group(function () {
     Route::get('/dashboard',[LandlordAuthController::class,'dashboard'])->name('dashboard');
-    Route::get('/properties',[LandlordAuthController::class,'properties'])->name('properties');
-    Route::get('/add_property',[LandlordAuthController::class,'add_property'])->name('add_property');
+    // properties
+    Route::get('property',[PropertyController::class,'properties'])->name('properties');
+    Route::get('create/property',[PropertyController::class,'add_property'])->name('add_property');
+    Route::post('store/property',[PropertyController::class,'store'])->name('store_property');
+    Route::get('/propertiesdetails',[LandlordAuthController::class,'propertiesdetails'])->name('propertiesdetails');
+    Route::post('store/category',[PropertyController::class,'category_store'])->name('category.store');
+
     // profile
     Route::get('/profile',[DashboardController::class,'profile'])->name('profile');
     Route::get('/profile',[LandlordAuthController::class,'profile'])->name('profile');

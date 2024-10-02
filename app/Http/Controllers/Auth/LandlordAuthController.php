@@ -18,25 +18,6 @@ class LandlordAuthController extends Controller
     {
         return view('Dashboard.landlord.dashboard');
     }
-
-
-
-    public function properties()
-    {
-        return view('Dashboard.landlord.properties');
-    }
-
-    public function add_property()
-    {
-        return view('Dashboard.landlord.add_property');
-    }
-
-    public function profile()
-    {
-    $user = Auth::user()->load('bank');
-
-    return view('Dashboard.tenant.profile' ,compact('user'));
-    }
     public function updateProfile(Request $request)
 {
 

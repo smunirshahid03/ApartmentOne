@@ -1,6 +1,5 @@
     @extends('Dashboard.Layouts.master_dashboard')
     @section('content')
-
         <style>
             /* Optional: some basic styling for the select box */
             .select2-container {
@@ -11,13 +10,15 @@
         <div class="add-property-form-sec">
             <div class="row">
                 <div class="col-md-12">
-                    <form id="uploadForm" action="">
+                    <form id="uploadForm" action="{{ route('landlord.store_property') }}" method="post"
+                        enctype="multipart/form-data">
+                        @csrf
                         <p>Minimum 10 images, Maximum 50 images</p>
                         <div class="main-file-upload-box">
 
                             <div id="imageContainer"><label for="fileInput"> <img
                                         src="{{ asset('assets/images/file-upload-img.png') }}" alt=""></label>
-                                <input type="file" id="fileInput" accept="image/*" multiple>
+                                <input type="file" id="fileInput" accept="image/*" multiple name="images[]">
                             </div>
                         </div>
 
@@ -27,15 +28,17 @@
                                 <input type="text" placeholder="Type Here">
                             </div>
                             <div class="input-box simple-select">
-                                <label for="cars">Category</label>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <label for="cars">Category</label>
+                                    <!-- Button to trigger the modal -->
+                                    <button type="button" id="create-category"
+                                        class="fa fa-plus btn btn-primary btn-sm px-3 py-2" style="white-space: nowrap"
+                                        data-bs-toggle="modal" data-bs-target="#categoryModal">Add Category</button>
+                                </div>
                                 <select name="cars" id="cars" placeholder="Type Here">
-                                    <option value="Category-01">Category-01</option>
-                                    <option value="Category-02">Category-02</option>
-                                    <option value="Category-03">Category-03</option>
-                                    <option value="Category-04">Category-04</option>
+                                    <!-- Categories will be appended here -->
                                 </select>
                             </div>
-
                             <div class="input-box progress-bar">
 
                                 <div class="progress-container">
@@ -141,13 +144,13 @@
                             <div class="input-box  mt-3">
                                 <label for="">Allowed Pets</label>
                                 <select class="js-example-basic-multiple" multiple="multiple" style="width: 300px;"
-                                id="services">
-                                <option value="AL">Alabama</option>
-                                <option value="WY">Wyoming</option>
-                                <option value="FL">Florida</option>
-                                <option value="NY">New York</option>
-                                <option value="CA">California</option>
-                            </select>
+                                    id="services">
+                                    <option value="AL">Alabama</option>
+                                    <option value="WY">Wyoming</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="NY">New York</option>
+                                    <option value="CA">California</option>
+                                </select>
 
                             </div>
 
@@ -155,7 +158,8 @@
                                 <p>Rent To Who</p>
 
                                 <div class="paren-check-box">
-                                    <input type="checkbox" id="dont-drink-alcohol" name="dont-drink-alcohol" value="rooms-and-features">
+                                    <input type="checkbox" id="dont-drink-alcohol" name="dont-drink-alcohol"
+                                        value="rooms-and-features">
                                     <label for="dont-drink-alcohol"> Don’t Drink Alcohol</label>
                                 </div>
                                 <div class="paren-check-box">
@@ -163,19 +167,23 @@
                                     <label for="dont-smoke"> Don’t Smoke</label>
                                 </div>
                                 <div class="paren-check-box">
-                                    <input type="checkbox" id="dont-rape-any-one" name="dont-rape-any-one" value="rooms-and-features">
+                                    <input type="checkbox" id="dont-rape-any-one" name="dont-rape-any-one"
+                                        value="rooms-and-features">
                                     <label for="dont-rape-any-one"> Don’t Rape Any One</label>
                                 </div>
                                 <div class="paren-check-box">
-                                    <input type="checkbox" id="dont-sex-addicted" name="dont-sex-addicted" value="rooms-and-features">
+                                    <input type="checkbox" id="dont-sex-addicted" name="dont-sex-addicted"
+                                        value="rooms-and-features">
                                     <label for="dont-sex-addicted"> Don’t Sex Addicted</label>
                                 </div>
                                 <div class="paren-check-box">
-                                    <input type="checkbox" id="dont-have-any-criminal Record" name="dont-have-any-criminal Record" value="rooms-and-features">
+                                    <input type="checkbox" id="dont-have-any-criminal Record"
+                                        name="dont-have-any-criminal Record" value="rooms-and-features">
                                     <label for="dont-have-any-criminal Record"> Don’t Have Any Criminal Record</label>
                                 </div>
                                 <div class="paren-check-box">
-                                    <input type="checkbox" id="dont-have-weapons" name="dont-have-weapons" value="rooms-and-features">
+                                    <input type="checkbox" id="dont-have-weapons" name="dont-have-weapons"
+                                        value="rooms-and-features">
                                     <label for="dont-have-weapons"> Don’t Have Weapons</label>
                                 </div>
 
@@ -190,7 +198,7 @@
 
                             <div class="input-box textarea">
                                 <label for="">Other Details</label>
-                               <textarea placeholder="Type Here"></textarea>
+                                <textarea placeholder="Type Here"></textarea>
                             </div>
 
                             <div class="input-box simple-select">
@@ -219,32 +227,49 @@
                             </div>
 
                         </div>
-
-
-
-
-
-
                     </form>
+                    <!-- Modal for adding a new category -->
+                    <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="categoryModalLabel">Add New Category</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="categoryForm">
+                                        <div class="mb-3">
+                                            <label for="new-category" class="form-label">Category Name</label>
+                                            <input type="text" class="form-control" id="new-category"
+                                                placeholder="Enter category name" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Add Category</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
 
-    <!-- Load jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- Load jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function() {
                 $('.js-example-basic-multiple').select2();
             });
 
             $(".js-example-basic-multiple").select2({
-    placeholder: "Select a state",
-    allowClear: true
-});
-$(".js-example-placeholder-multiple").select2({
-    placeholder: "Select a state"
-});
+                placeholder: "Select a state",
+                allowClear: true
+            });
+            $(".js-example-placeholder-multiple").select2({
+                placeholder: "Select a state"
+            });
         </script>
 
 
@@ -445,6 +470,45 @@ $(".js-example-placeholder-multiple").select2({
                     alert('You need to upload at least 10 images.');
                 }
             }
+        </script>
+        <script>
+            $(document).ready(function() {
+                // Handle form submission inside the modal
+                $('#categoryForm').on('submit', function(event) {
+                    event.preventDefault(); // Prevent the form from submitting normally
+
+                    var newCategory = $('#new-category').val();
+                    if (newCategory) {
+                        $.ajax({
+                            url: "{{ route('landlord.category.store') }}", // Update to your route
+                            method: "POST",
+                            data: {
+                                _token: "{{ csrf_token() }}",
+                                name: newCategory
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    // Add the new category to the select dropdown
+                                    $('#cars').append(
+                                        `<option value="${response.category.id}" selected>${response.category.name}</option>`
+                                    );
+
+                                    // Clear the input field and close the modal
+                                    $('#new-category').val('');
+                                    $('#categoryModal').modal('hide'); // Hide the modal
+                                } else {
+                                    alert(response.message);
+                                }
+                            },
+                            error: function(error) {
+                                alert('Error creating category');
+                            }
+                        });
+                    } else {
+                        alert('Please enter a category name');
+                    }
+                });
+            });
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.8/popper.min.js"></script>
