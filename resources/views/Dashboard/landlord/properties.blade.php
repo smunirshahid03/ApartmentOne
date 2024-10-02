@@ -32,7 +32,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="t-btn t-btn-blue t-btn-svg">Add Property
+                    <a href="{{ route('landlord.add_property') }}" class="t-btn t-btn-blue t-btn-svg">Add Property
                         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11.0215 17.5981L12.3834 18.9601L18.8435 12.5L12.3834 6.03992L11.0215 7.40186L15.1564 11.5368H5.92334V13.4632H15.1564L11.0215 17.5981Z" fill="white"></path>
                             </svg>

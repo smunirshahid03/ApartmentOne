@@ -84,6 +84,7 @@
                 </div>
                 <div class="profile-basic-info-form">
                     <h3>Basic Info</h3>
+                    @if (Auth::user()->hasRole('tenant'))
                     <form action="{{ route('tenant.profile.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="two-inputs-boxes-align">
@@ -148,41 +149,74 @@
                                 <img src="{{ asset('assets/images/right-arrow.png') }}" alt=""></button>
                         </div>
                     </form>
-                    <div class="bank-info-box">
-                        <h3>Bank Info</h3>
-                        <form action="{{ route('tenant.bank') }}" method="POST" id="bank-form">
-                            @csrf
-                            <div class="two-inputs-boxes-align">
-                                <div class="input-box">
-                                    {{-- {{ dd($user->bank) }} --}}
-                                    <label for="">Bank Name</label>
-                                    <input type="text" placeholder="ABC Bank" name="bank_name" value="{{ $user->bank->bank_name ?? '' }} ">
-                                </div>
-                                <div class="input-box">
-                                    <label for="">Branch Code</label>
-                                    <input type="text" placeholder="XXXX" name="branch_code" value="{{ $user->bank->branch_code ?? '' }} ">
-                                </div>
+                    @endif
+                    @if (Auth::user()->hasRole('land_lord'))
+                    <form action="{{ route('landlord.profile.update') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="two-inputs-boxes-align">
+                            <div class="input-box">
+                                <label for="">Upload Profile</label>
+                                <input type="file" name="profile_img" accept="image/*">
                             </div>
-                            <div class="two-inputs-boxes-align">
-                                <div class="input-box">
-                                    <label for="">Identity Card Number</label>
-                                    <input type="text" placeholder="XXXX" name="identity_card" value="{{ $user->bank->identity_card ?? '' }} ">
-                                </div>
-                                <div class="input-box">
-                                    <label for="">Account Number</label>
-                                    <input type="text" placeholder="XXXX" name="account_number" value="{{ $user->bank->account_number ?? '' }} ">
-                                </div>
+                            <div class="input-box">
+                                <label for="">Change Password</label>
+                                <input type="text" name="password">
                             </div>
-                            <div class="two-btn-align-sub-del">
-                                <button type="submit" class="form-btn submit">Save Changes <img src="{{ asset('assets/images/right-arrow.png') }}" alt=""></button>
-                                <button class="form-btn delet">Discard Changes <img src="{{ asset('assets/images/right-arrow.png') }}" alt=""></button>
+                        </div>
+                        <div class="two-inputs-boxes-align">
+                            <div class="input-box">
+                                <label for="">Full Name</label>
+                                <input type="text" placeholder="Full Name" name="name"
+                                    value="{{ $user->name ?? '' }}" required>
                             </div>
-                        </form>
-
-
-                    </div>
-                </div>
-            </div>
+                            <div class="input-box">
+                                <label for="">Email Address</label>
+                                <input type="email" placeholder="Email Address" value="{{ $user->email ?? '' }}"
+                                    name="email" required>
+                            </div>
+                        </div>
+                        <div class="two-inputs-boxes-align">
+                            <div class="input-box">
+                                <label for="">City</label>
+                                <input type="text" placeholder="Chicago" name="city" value="{{ $user->city ?? '' }}">
+                            </div>
+                            <div class="input-box">
+                                <label for="">Country</label>
+                                <input type="text" placeholder="USA" value="{{ $user->country ?? '' }}" name="country">
+                            </div>
+                        </div>
+                        <div class="two-inputs-boxes-align">
+                            <div class="input-box">
+                                <label for="">State</label>
+                                <input type="text" placeholder="New York" name="state"
+                                    value="{{ $user->state ?? '' }}">
+                            </div>
+                            <div class="input-box">
+                                <label for="">Postal Code</label>
+                                <input type="tel" placeholder="1001" value="{{ $user->postal_code ?? '' }}"
+                                    name="postal_code">
+                            </div>
+                        </div>
+                        <div class="two-inputs-boxes-align">
+                            <div class="input-box">
+                                <label for="">Phone Number</label>
+                                <input type="tel" placeholder="+1 123 456 789" value="{{ $user->phone ?? '' }}"
+                                    name="phone">
+                            </div>
+                            <div class="input-box">
+                                <label for="">Date Of Birth</label>
+                                <input type="date" value="{{ $user->date_of_birth ?? '' }}" name="date_of_birth">
+                            </div>
+                        </div>
+                        <div class="two-btn-align-sub-del">
+                            <button type="submit" class="form-btn submit">Save Changes <img
+                                    src="{{ asset('assets/images/right-arrow.png') }}" alt=""></button>
+                            <button type="button" class="form-btn delet" onclick="window.history.back()">Discard Changes
+                                <img src="{{ asset('assets/images/right-arrow.png') }}" alt=""></button>
+                        </div>
+                    </form>
+                    @endif
+                    
         </div>
     </div>
 @endsection
