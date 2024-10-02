@@ -38,11 +38,11 @@
                 </div>
 
                 @if (session('success'))
-                    <div class="mt-3 alert alert-success alert-dismissible fade show">
-                        <strong>Success!</strong> {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                @endif
+                <div class="mt-3 alert alert-success alert-dismissible fade show">
+                    <strong>Success!</strong> {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
 
             </div>
             <div class="col-lg-8">
@@ -87,8 +87,8 @@
                 </div>
                 <div class="profile-basic-info-form">
                     <h3>Basic Info</h3>
-                    @if (Auth::user()->hasRole('tenant'))
-                    <form action="{{ route('tenant.profile.update') }}" method="POST" enctype="multipart/form-data">
+                    @if (Auth::user()->hasRole('land_lord'))
+                    <form action="{{ route('landlord.profile.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="two-inputs-boxes-align">
                             <div class="input-box">
@@ -152,41 +152,6 @@
                                 <img src="{{ asset('assets/images/right-arrow.png') }}" alt=""></button>
                         </div>
                     </form>
-                    <div class="bank-info-box">
-                        <h3>Bank Info</h3>
-                        <form action="{{ route('tenant.bank') }}" method="POST" id="bank-form">
-                            @csrf
-                            <div class="two-inputs-boxes-align">
-                                <div class="input-box">
-                                    {{-- {{ dd($user->bank) }} --}}
-                                    <label for="">Bank Name</label>
-                                    <input type="text" placeholder="ABC Bank" name="bank_name" value="{{ $user->bank->bank_name ?? '' }} ">
-                                </div>
-                                <div class="input-box">
-                                    <label for="">Branch Code</label>
-                                    <input type="text" placeholder="XXXX" name="branch_code" value="{{ $user->bank->branch_code ?? '' }} ">
-                                </div>
-                            </div>
-                            <div class="two-inputs-boxes-align">
-                                <div class="input-box">
-                                    <label for="">Identity Card Number</label>
-                                    <input type="text" placeholder="XXXX" name="identity_card" value="{{ $user->bank->identity_card ?? '' }} ">
-                                </div>
-                                <div class="input-box">
-                                    <label for="">Account Number</label>
-                                    <input type="text" placeholder="XXXX" name="account_number" value="{{ $user->bank->account_number ?? '' }} ">
-                                </div>
-                            </div>
-                            <div class="two-btn-align-sub-del">
-                                <button type="submit" class="form-btn submit">Save Changes <img src="{{ asset('assets/images/right-arrow.png') }}" alt=""></button>
-                                <button class="form-btn delet">Discard Changes <img src="{{ asset('assets/images/right-arrow.png') }}" alt=""></button>
-                            </div>
-                        </form>
-
-
-                    </div>
-                </div>
-            </div>
                     @endif
 
         </div>

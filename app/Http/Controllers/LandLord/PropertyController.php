@@ -48,5 +48,9 @@ class PropertyController extends Controller
             'category' => $category
         ]);
     }
+    public function propertiesdetails()
+    {
+        return view('Dashboard.landlord.propertiesdetails');
+    }
 
 }

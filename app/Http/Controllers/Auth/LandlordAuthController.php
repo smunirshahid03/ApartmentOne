@@ -20,7 +20,6 @@ class LandlordAuthController extends Controller
     }
     public function updateProfile(Request $request)
 {
-
     $user = auth()->user();
     // Validate the incoming request
     $validator = Validator::make($request->all(), [
@@ -80,5 +79,8 @@ class LandlordAuthController extends Controller
 
     return redirect()->route('landlord.profile')->with('success', 'Profile updated successfully!');
 }
-
+    public function profile()
+    {   $user = auth()->user();
+        return view('Dashboard.landlord.profile',compact('user'));
+    }
 }

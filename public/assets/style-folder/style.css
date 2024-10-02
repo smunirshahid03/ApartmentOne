@@ -1113,8 +1113,8 @@ margin: 0;
 .dashboard-main .left-panel {
     background-color: #414141;
     border-radius: 20px;
-    height: 100vh;
-    min-height: 100vh;
+    height: 95vh;
+    min-height: 95vh;
     padding: 25px;
     padding-right: 50px;
 }
@@ -2363,6 +2363,12 @@ margin-top: -5px;
 }
 
 /* landlord-css-end */
+
+.col-lg-8 {
+    overflow: scroll;
+    height: 85vh;
+    overflow-x: hidden;
+}
 
 @media (min-width: 1400px) {
 .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {

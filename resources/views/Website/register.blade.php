@@ -33,7 +33,7 @@
                             <select name="role">
                                 <option disabled>Select Role</option>
                                 <option value="tenant">Tenant</option>
-                                <option value="land_lord">Land Rord</option>
+                                <option value="land_lord">Landlord</option>
                             </select>
                             {{-- <input type="text" placeholder="Social Security Number" required name="ssn"> --}}
                             <div class="forms-btns-inline">

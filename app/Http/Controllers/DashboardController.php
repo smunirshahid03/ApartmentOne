@@ -21,8 +21,8 @@ class DashboardController extends Controller
     }
 
     public function profile()
-    {
-        return view('Dashboard.tenant.profile');
+    {    $user = auth()->user();
+        return view('Dashboard.tenant.profile',compact('user'));
     }
 
     public function wishlist()
@@ -34,6 +34,11 @@ class DashboardController extends Controller
     public function notifications()
     {
         return view('Dashboard.tenant.notifications');
+    }
+
+    public function messages()
+    {
+        return view('Dashboard.tenant.messages');
     }
 
     public function messages()
