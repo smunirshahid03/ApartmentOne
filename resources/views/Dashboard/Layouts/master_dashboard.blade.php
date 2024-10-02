@@ -193,7 +193,7 @@
                                         Messages</a></li>
                                 <li><a href="#" class="user-profile-link"><img
                                             src="{{ Storage::url(auth()->user()->profile_img ?? '') }}"
-                                            alt="">{{ $user->name ?? '' }}</a></li>
+                                            alt="">{{ explode(' ', Auth::user()->name)[0] ?? '' }}</a></li>
                             </ul>
                         </div>
                     </div>

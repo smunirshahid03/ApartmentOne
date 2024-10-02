@@ -18,12 +18,7 @@
     <div class="profile-page">
         <div class="row">
             <div class="col-lg-4">
-                @if (session('success'))
-                    <div class="alert alert-success alert-dismissible fade show">
-                        <strong>Success!</strong> {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                @endif
+
                 <div class="detailed-user-box">
                     <div class="user-img-box">
                         <img src="{{ Storage::url($user->profile_img ?? '') }}" alt="">
@@ -41,6 +36,14 @@
                         </ul>
                     </div>
                 </div>
+
+                @if (session('success'))
+                    <div class="mt-3 alert alert-success alert-dismissible fade show">
+                        <strong>Success!</strong> {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                @endif
+                
             </div>
             <div class="col-lg-8">
                 <div class="credit-report-box">
@@ -216,7 +219,7 @@
                         </div>
                     </form>
                     @endif
-                    
+
         </div>
     </div>
 @endsection
