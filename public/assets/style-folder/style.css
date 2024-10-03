@@ -2413,13 +2413,114 @@ margin-top: -5px;
     height: 30px;
 }
 
+.properties-page.admin-properties .latest-listing-parent-box {
+    background-color: #00000008;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #00000014;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .latest-child-box .box.property-detail-box {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+
+.properties-page.admin-properties .latest-listing-parent-box .latest-child-box .box.property-detail-box .content h6 {
+    margin: 0;
+    font-size: 12px;
+    color: #003170;
+    font-weight: 500;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .latest-child-box .box.property-detail-box .content h5 {
+    color: black;
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .latest-child-box .box.property-detail-box .content p {
+    color: #777777;
+    font-size: 13px;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .latest-child-box .box.property-detail-box .content h4 {
+    color: #0077B6;
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .box.two-person-align-box {
+    display: flex;
+    gap: 25px;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .box.two-person-align-box .sunb-person-child-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .box.two-person-align-box .sunb-person-child-box .content h6 {
+    margin: 0;
+    color: #003170;
+    font-size: 12px;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .box.two-person-align-box .sunb-person-child-box .content h5 {
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .box.two-person-align-box .sunb-person-child-box .content p {
+    color: #777777;
+    font-size: 13px;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .two-btns-inline {
+    display: flex;
+    gap: 20px;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .two-btns-inline button {
+    background-color: #AAAAAA;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 50px;
+    transition: .3s;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .two-btns-inline button:nth-child(1) {
+    background-color: #0077B6;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .two-btns-inline button:hover {
+    background-color: black;
+}
+
 /* landlord-css-end */
 
 .col-lg-8 {
-    overflow: scroll;
-    height: 85vh;
-    overflow-x: hidden;
+    overflow: scroll !important;
+    height: 85vh !important;
+    overflow-x: hidden !important;
 }
+
+.col-lg-9 .col-lg-12,.col-lg-9 .col-md-12 {
+    height: 85vh !important;
+    overflow: hidden !important;
+    overflow-y: auto  !important;
+}
+
 
 @media (min-width: 1400px) {
 .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Auth\AuhController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\TenantAuthController;
 use App\Http\Controllers\Auth\LandlordAuthController;
 use App\Http\Controllers\LandLord\PropertyController;
@@ -47,7 +48,7 @@ Route::post('/logout',[AuhController::class,'logout'])->name('logout');
 Route::prefix('tenant')->name('tenant.')->group(function () {
     Route::middleware(['role:tenant'])->group(function () {
     Route::get('/dashboard',[TenantAuthController::class,'dashboard'])->name('dashboard');
-    Route::get('/properties',[DashboardController::class,'properties'])->name('properties');
+    Route::get('/properties',[TenantAuthController::class,'properties'])->name('properties');
     Route::get('/propertieslistings',[DashboardController::class,'propertieslistings'])->name('propertieslistings');
     Route::get('/applyhistory',[DashboardController::class,'applyhistory'])->name('applyhistory');
     Route::get('/profile',[DashboardController::class,'profile'])->name('profile');
@@ -61,7 +62,6 @@ Route::prefix('tenant')->name('tenant.')->group(function () {
     Route::post('/bank', [TenantAuthController::class, 'bank'])->name('bank');
 });
 });
-
 
 // Landlord Routes
 Route::prefix('landlord')->name('landlord.')->group(function () {
@@ -82,3 +82,21 @@ Route::prefix('landlord')->name('landlord.')->group(function () {
 });
 
 
+//Admin Dashboard Routes
+Route::prefix('admin')->name('admin.')->group(function () {
+    // Route::middleware(['role:tenant'])->group(function () {
+    Route::get('/dashboard',[AdminAuthController::class,'dashboard'])->name('dashboard');
+    Route::get('/properties',[AdminAuthController::class,'properties'])->name('properties');
+    Route::get('/propertieslistings',[DashboardController::class,'propertieslistings'])->name('propertieslistings');
+    Route::get('/applyhistory',[DashboardController::class,'applyhistory'])->name('applyhistory');
+    Route::get('/profile',[DashboardController::class,'profile'])->name('profile');
+    Route::get('/wishlist',[DashboardController::class,'wishlist'])->name('wishlist');
+    Route::get('/notifications',[AdminAuthController::class,'notifications'])->name('notifications');
+    Route::get('/messages',[DashboardController::class,'messages'])->name('messages');
+    // profile
+    Route::get('/profile',[TenantAuthController::class,'profile'])->name('profile');
+    Route::post('/profile/update', [TenantAuthController::class, 'updateProfile'])->name('profile.update');
+    //  Bank Info
+    Route::post('/bank', [TenantAuthController::class, 'bank'])->name('bank');
+});
+// });

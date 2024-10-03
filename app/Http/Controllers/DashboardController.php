@@ -6,10 +6,7 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function properties()
-    {
-        return view('Dashboard.tenant.properties');
-    }
+ 
     public function propertieslistings()
     {
         return view('Dashboard.tenant.propertieslistings');
@@ -41,9 +38,9 @@ class DashboardController extends Controller
         return view('Dashboard.tenant.messages');
     }
 
-    public function messages()
+    public function properties()
     {
-        return view('Dashboard.tenant.messages');
+        return view('Dashboard.admin.properties');
     }
 }
 
