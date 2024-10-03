@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Auth\AuhController;
+use App\Http\Controllers\Admin\PetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\AdminAuthController;
+use App\Http\Controllers\Admin\RentToWhoController;
 use App\Http\Controllers\Auth\TenantAuthController;
 use App\Http\Controllers\Auth\LandlordAuthController;
 use App\Http\Controllers\LandLord\PropertyController;
@@ -87,14 +89,43 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['role:admin'])->group(function () {
     Route::get('/dashboard',[AdminAuthController::class,'dashboard'])->name('dashboard');
     Route::get('/properties',[AdminAuthController::class,'properties'])->name('properties');
+    Route::get('/income_reports',[AdminAuthController::class,'income_reports'])->name('income_reports');
+    Route::get('/user_reports',[AdminAuthController::class,'user_reports'])->name('user_reports');
+    Route::get('/pricing',[AdminAuthController::class,'pricing'])->name('pricing');
+    Route::get('/edit_pricing',[AdminAuthController::class,'edit_pricing'])->name('edit_pricing');
+    Route::get('/users',[AdminAuthController::class,'users'])->name('users');
+    Route::get('/propertiesdetails',[AdminAuthController::class,'propertiesdetails'])->name('propertiesdetails');
     Route::get('/propertieslistings',[AdminAuthController::class,'propertieslistings'])->name('propertieslistings');
-    Route::get('/applyhistory',[AdminAuthController::class,'applyhistory'])->name('applyhistory');
-    Route::get('/profile',[AdminAuthController::class,'profile'])->name('profile');
     Route::get('/wishlist',[AdminAuthController::class,'wishlist'])->name('wishlist');
     Route::get('/notifications',[AdminAuthController::class,'notifications'])->name('notifications');
     Route::get('/messages',[AdminAuthController::class,'messages'])->name('messages');
     // profile
     Route::get('/profile',[AdminAuthController::class,'profile'])->name('profile');
     Route::post('/profile/update', [AdminAuthController::class, 'updateProfile'])->name('profile.update');
+    //Room Feature
+    Route::get('room-features',[AdminAuthController::class,'room_features'])->name('room_features');
+    Route::post('store-features',[AdminAuthController::class,'features_store'])->name('features.store');
+    Route::get('store-features/show',[AdminAuthController::class,'features_show'])->name('features.show');
+    Route::get('roomFeature/{id}/edit', [AdminAuthController::class, 'edit'])->name('roomFeature.edit');
+    Route::post('roomFeature/{id}', [AdminAuthController::class, 'update'])->name('roomFeature.update');
+    Route::delete('roomFeature/{id}', [AdminAuthController::class, 'destroy'])->name('roomFeature.destroy');
+    // pets
+    Route::prefix('pets')->name('pets.')->group(function () {
+        Route::get('/', [PetController::class, 'index'])->name('index');
+        Route::get('create', [PetController::class, 'create'])->name('create');
+        Route::post('/', [PetController::class, 'store'])->name('store');
+        Route::get('{pet}/edit', [PetController::class, 'edit'])->name('edit');
+        Route::post('{pet}', [PetController::class, 'update'])->name('update');
+        Route::delete('{pet}', [PetController::class, 'destroy'])->name('destroy');
+    });
+// RentToWho
+        Route::prefix('rent-to-who')->name('rent-to-who.')->group(function () {
+        Route::get('/', [RentToWhoController::class, 'index'])->name('index');
+        Route::get('create', [RentToWhoController::class, 'create'])->name('create');
+        Route::post('/', [RentToWhoController::class, 'store'])->name('store');
+        Route::get('{id}/edit', [RentToWhoController::class, 'edit'])->name('edit');
+        Route::post('{id}', [RentToWhoController::class, 'update'])->name('update');
+        Route::delete('{id}', [RentToWhoController::class, 'destroy'])->name('destroy');
+    });
 });
 });

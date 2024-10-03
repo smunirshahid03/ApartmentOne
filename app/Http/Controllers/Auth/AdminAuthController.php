@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Feature;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,6 +26,39 @@ class AdminAuthController extends Controller
     {
         return view('Dashboard.admin.properties');
     }
+
+    public function propertiesdetails()
+    {
+        return view('Dashboard.admin.propertiesdetails');
+    }
+
+    public function income_reports()
+    {
+        return view('Dashboard.admin.income_reports');
+    }
+
+    public function user_reports()
+    {
+        return view('Dashboard.admin.user_reports');
+    }
+
+
+    public function pricing()
+    {
+        return view('Dashboard.admin.pricing');
+    }
+
+
+    public function edit_pricing()
+    {
+        return view('Dashboard.admin.edit_pricing');
+    }
+
+    public function users()
+    {
+        return view('Dashboard.admin.users');
+    }
+
 
     public function updateProfile(Request $request)
 {
@@ -95,4 +129,60 @@ class AdminAuthController extends Controller
     {
         return view('Dashboard.admin.propertieslistings');
     }
+
+    public function room_features(){
+
+        return view('Dashboard.admin.roomFeature.room_features');
+    }
+
+    public function features_store(Request $request)
+    {
+    // Validate the input (optional but recommended)
+    $request->validate([
+        'room_features' => 'required|array',
+        'room_features.*' => 'required|string|max:255', // Validate each feature string
+    ]);
+
+    // Loop through the room_features array and create a new feature for each entry
+    foreach ($request->room_features as $feature) {
+        Feature::create([
+            'name' => $feature,
+        ]);
+    }
+    // Redirect or return success response
+    return redirect()->route('admin.features.show')->with('success', 'Features added successfully!');
+    }
+
+    public function features_show()
+    {
+        $features = Feature::where('deleted_at', null)->get()->all();
+        return view('Dashboard.admin.roomFeature.show', compact('features'));
+    }
+    public function edit($id)
+    {
+        $feature = Feature::findOrFail($id);
+        return view('Dashboard.admin.roomFeature.room_features', compact('feature'));
+    }
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'room_features' => 'required|array',
+            'room_features.*' => 'required|string|max:255',
+        ]);
+
+        $feature = Feature::findOrFail($id);
+        $feature->update([
+            'name' => $request->room_features[0],
+        ]);
+        return redirect()->route('admin.features.show')->with('success', 'Feature updated successfully!');
+    }
+
+public function destroy($id)
+{
+    $feature = Feature::findOrFail($id);
+    $feature->delete();
+
+    return redirect()->route('admin.features.show')->with('success', 'Feature deleted successfully!');
+}
+
 }
