@@ -84,19 +84,17 @@ Route::prefix('landlord')->name('landlord.')->group(function () {
 
 //Admin Dashboard Routes
 Route::prefix('admin')->name('admin.')->group(function () {
-    // Route::middleware(['role:tenant'])->group(function () {
+    Route::middleware(['role:admin'])->group(function () {
     Route::get('/dashboard',[AdminAuthController::class,'dashboard'])->name('dashboard');
     Route::get('/properties',[AdminAuthController::class,'properties'])->name('properties');
-    Route::get('/propertieslistings',[DashboardController::class,'propertieslistings'])->name('propertieslistings');
-    Route::get('/applyhistory',[DashboardController::class,'applyhistory'])->name('applyhistory');
-    Route::get('/profile',[DashboardController::class,'profile'])->name('profile');
-    Route::get('/wishlist',[DashboardController::class,'wishlist'])->name('wishlist');
+    Route::get('/propertieslistings',[AdminAuthController::class,'propertieslistings'])->name('propertieslistings');
+    Route::get('/applyhistory',[AdminAuthController::class,'applyhistory'])->name('applyhistory');
+    Route::get('/profile',[AdminAuthController::class,'profile'])->name('profile');
+    Route::get('/wishlist',[AdminAuthController::class,'wishlist'])->name('wishlist');
     Route::get('/notifications',[AdminAuthController::class,'notifications'])->name('notifications');
-    Route::get('/messages',[DashboardController::class,'messages'])->name('messages');
+    Route::get('/messages',[AdminAuthController::class,'messages'])->name('messages');
     // profile
-    Route::get('/profile',[TenantAuthController::class,'profile'])->name('profile');
-    Route::post('/profile/update', [TenantAuthController::class, 'updateProfile'])->name('profile.update');
-    //  Bank Info
-    Route::post('/bank', [TenantAuthController::class, 'bank'])->name('bank');
+    Route::get('/profile',[AdminAuthController::class,'profile'])->name('profile');
+    Route::post('/profile/update', [AdminAuthController::class, 'updateProfile'])->name('profile.update');
 });
-// });
+});
