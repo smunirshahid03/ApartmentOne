@@ -1,110 +1,516 @@
 @extends('Dashboard.Layouts.master_dashboard')
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
-<div class="propertieslistings-page">
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="place-gallery-box">
-                <div class="large-gallery-box">
-                    <a href="{{ asset('assets/images/dash-properties-01.png') }} " data-fancybox="gallery" data-caption="Caption Images 1">
-                        <img src="{{ asset('assets/images/dash-properties-01.png') }}" alt="Image Gallery">
-                      </a>
-                </div>
-                <div class="small-gallery-box">
-                    <a href="{{ asset('assets/images/dash-properties-02.png') }}" data-fancybox="gallery" data-caption="Caption Images 1">
-                        <img src="{{ asset('assets/images/dash-properties-02.png') }}" alt="Image Gallery">
-                      </a>
-                      <a href="{{ asset('assets/images/dash-properties-03.png') }}" data-fancybox="gallery" data-caption="Caption Images 1">
-                        <img src="{{ asset('assets/images/dash-properties-03.png') }}" alt="Image Gallery">
-                      </a>
-                      <a href="{{ asset('assets/images/dash-properties-04.png') }}" data-fancybox="gallery" data-caption="Caption Images 1">
-                        <img src="{{ asset('assets/images/dash-properties-04.png') }}" alt="Image Gallery">
-                      </a>
-                      <a href="{{ asset('assets/images/dash-properties-05.png') }}" data-fancybox="gallery" data-caption="Caption Images 1">
-                        <img src="{{ asset('assets/images/dash-properties-05.png') }}" alt="Image Gallery">
-                      </a>
-                      <a href="{{ asset('assets/images/dash-properties-06.png') }}" data-fancybox="gallery" data-caption="Caption Images 1">
-                        <img src="{{ asset('assets/images/dash-properties-06.png') }}" alt="Image Gallery">
-                      </a>
+    <style>
+        /* Optional: some basic styling for the select box */
+        .select2-container {
+            width: 100% !important;
+            /* Make Select2 full width */
+        }
+    </style>
+    <div class="add-property-form-sec">
+        <div class="row">
+            <div class="col-md-12">
+                <form id="uploadForm" action="{{ route('landlord.store_property') }}" method="post"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <p>Minimum 10 images, Maximum 50 images</p>
+                    <div class="main-file-upload-box">
 
-                </div>
-                <div class="proper-list-price">
-                    <h3>$1,500/month</h3>
-                </div>
-            </div>
+                        <div id="imageContainer"><label for="fileInput"> <img
+                                    src="{{ asset('assets/images/file-upload-img.png') }}" alt=""></label>
+                            <input type="file" id="fileInput" accept="image/*" multiple name="images[]">
+                        </div>
+                    </div>
 
-        </div>
-        <div class="col-lg-8">
-            <div class="properties_details_main">
-                <div class="properties_name_add">
-                    <div class="name">
-                        <h5>2nd floor Apartment in Las Vegas USA</h5>
-                    </div>
-                    <div class="add">
-                        <a href="#"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14 6H8V0H6V6H0V8H6V14H8V8H14V6Z" fill="white"/>
-                            </svg>
-                            </a>
-                    </div>
-                </div>
-                <div class="properties-icons-details">
-                    <ul>
-                        <li><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M25 11.9462V3.75H22.5V6.25H7.5V3.75H5V11.9462C3.5125 12.8125 2.5 14.4062 2.5 16.25V21.25C2.5 21.5815 2.6317 21.8995 2.86612 22.1339C3.10054 22.3683 3.41848 22.5 3.75 22.5H5V27.5H7.5V22.5H22.5V27.5H25V22.5H26.25C26.5815 22.5 26.8995 22.3683 27.1339 22.1339C27.3683 21.8995 27.5 21.5815 27.5 21.25V16.25C27.5 14.4062 26.4862 12.8125 25 11.9462ZM22.5 8.75V11.25H16.25V8.75H22.5ZM7.5 8.75H13.75V11.25H7.5V8.75ZM25 20H5V16.25C5 14.8713 6.12125 13.75 7.5 13.75H22.5C23.8787 13.75 25 14.8713 25 16.25V20Z" fill="#666666"/>
-                            </svg>
-                             2 Bed Rooms</li>
-                        <li><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M26.25 12.5H8.75V8.75C8.75 7.37125 9.87125 6.25 11.25 6.25C12.6287 6.25 13.75 7.37125 13.75 8.75H16.25C16.25 5.9925 14.0075 3.75 11.25 3.75C8.4925 3.75 6.25 5.9925 6.25 8.75V12.5H3.75C3.41848 12.5 3.10054 12.6317 2.86612 12.8661C2.6317 13.1005 2.5 13.4185 2.5 13.75V16.25C2.5 19.5075 4.5925 22.2787 7.5 23.3125V27.5H10V23.75H20V27.5H22.5V23.3125C25.4075 22.2787 27.5 19.5075 27.5 16.25V13.75C27.5 13.4185 27.3683 13.1005 27.1339 12.8661C26.8995 12.6317 26.5815 12.5 26.25 12.5ZM25 16.25C25 19.0075 22.7575 21.25 20 21.25H10C7.2425 21.25 5 19.0075 5 16.25V15H25V16.25Z" fill="#666666"/>
-                            </svg>
-                             2 Attach Bathrooms</li>
-                        <li><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.55 27.3388L15 27.5C14.644 24.6511 13.3387 22.0051 11.2948 19.9888C9.2508 17.9725 6.58728 16.7034 3.73375 16.3863L2.5 16.25L2.52625 16.4663C2.87504 19.2535 4.15238 21.8421 6.15231 23.8146C8.15224 25.787 10.7582 27.0285 13.55 27.3388ZM27.4738 16.4663L27.5 16.25L26.2663 16.3863C20.3913 17.04 15.7325 21.6362 15 27.5L16.45 27.3388C19.2418 27.0285 21.8478 25.787 23.8477 23.8146C25.8476 21.8421 27.125 19.2535 27.4738 16.4663ZM22.5788 6.875C22.1643 6.15727 21.4818 5.63356 20.6812 5.41907C19.8807 5.20457 19.0277 5.31687 18.31 5.73125C18.2325 5.775 18.1712 5.8325 18.1 5.8825C18.1062 5.79625 18.125 5.7125 18.125 5.625C18.125 4.7962 17.7958 4.00134 17.2097 3.41529C16.6237 2.82924 15.8288 2.5 15 2.5C14.1712 2.5 13.3763 2.82924 12.7903 3.41529C12.2042 4.00134 11.875 4.7962 11.875 5.625C11.875 5.7125 11.8938 5.79625 11.9012 5.8825C11.83 5.8325 11.7675 5.775 11.6912 5.73125C10.9739 5.32339 10.1243 5.21582 9.32792 5.43204C8.53154 5.64825 7.85301 6.17068 7.44039 6.88533C7.02778 7.59998 6.91458 8.44882 7.12551 9.24662C7.33643 10.0444 7.85435 10.7264 8.56625 11.1438C8.6425 11.1875 8.72375 11.2137 8.80125 11.25C8.72375 11.2863 8.6425 11.3125 8.56625 11.3562C7.85435 11.7736 7.33643 12.4556 7.12551 13.2534C6.91458 14.0512 7.02778 14.9 7.44039 15.6147C7.85301 16.3293 8.53154 16.8518 9.32792 17.068C10.1243 17.2842 10.9739 17.1766 11.6912 16.7688C11.7687 16.725 11.83 16.6675 11.9012 16.6175C11.8938 16.7037 11.875 16.7875 11.875 16.875C11.875 17.7038 12.2042 18.4987 12.7903 19.0847C13.3763 19.6708 14.1712 20 15 20C15.8288 20 16.6237 19.6708 17.2097 19.0847C17.7958 18.4987 18.125 17.7038 18.125 16.875C18.125 16.7875 18.1062 16.7037 18.0988 16.6175C18.17 16.6675 18.2313 16.725 18.3088 16.7688C19.0261 17.1766 19.8757 17.2842 20.6721 17.068C21.4685 16.8518 22.147 16.3293 22.5596 15.6147C22.9722 14.9 23.0854 14.0512 22.8745 13.2534C22.6636 12.4556 22.1456 11.7736 21.4338 11.3562C21.3575 11.3125 21.2762 11.2863 21.1987 11.25C21.2775 11.2137 21.3575 11.1875 21.4338 11.1438C21.7892 10.9387 22.1008 10.6655 22.3508 10.34C22.6007 10.0145 22.7841 9.64293 22.8904 9.24653C22.9967 8.85013 23.0239 8.43668 22.9705 8.02977C22.917 7.62286 22.7839 7.23047 22.5788 6.875ZM15 15C14.0054 15 13.0516 14.6049 12.3483 13.9017C11.6451 13.1984 11.25 12.2446 11.25 11.25C11.25 10.2554 11.6451 9.30161 12.3483 8.59835C13.0516 7.89509 14.0054 7.5 15 7.5C15.9946 7.5 16.9484 7.89509 17.6517 8.59835C18.3549 9.30161 18.75 10.2554 18.75 11.25C18.75 12.2446 18.3549 13.1984 17.6517 13.9017C16.9484 14.6049 15.9946 15 15 15Z" fill="#666666"/>
-                            </svg>
-                             Outdoor Garden</li>
-                        <li><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.55 27.3388L15 27.5C14.644 24.6511 13.3387 22.0051 11.2948 19.9888C9.2508 17.9725 6.58728 16.7034 3.73375 16.3863L2.5 16.25L2.52625 16.4663C2.87504 19.2535 4.15238 21.8421 6.15231 23.8146C8.15224 25.787 10.7582 27.0285 13.55 27.3388ZM27.4738 16.4663L27.5 16.25L26.2663 16.3863C20.3913 17.04 15.7325 21.6362 15 27.5L16.45 27.3388C19.2418 27.0285 21.8478 25.787 23.8477 23.8146C25.8476 21.8421 27.125 19.2535 27.4738 16.4663ZM22.5788 6.875C22.1643 6.15727 21.4818 5.63356 20.6812 5.41907C19.8807 5.20457 19.0277 5.31687 18.31 5.73125C18.2325 5.775 18.1712 5.8325 18.1 5.8825C18.1062 5.79625 18.125 5.7125 18.125 5.625C18.125 4.7962 17.7958 4.00134 17.2097 3.41529C16.6237 2.82924 15.8288 2.5 15 2.5C14.1712 2.5 13.3763 2.82924 12.7903 3.41529C12.2042 4.00134 11.875 4.7962 11.875 5.625C11.875 5.7125 11.8938 5.79625 11.9012 5.8825C11.83 5.8325 11.7675 5.775 11.6912 5.73125C10.9739 5.32339 10.1243 5.21582 9.32792 5.43204C8.53154 5.64825 7.85301 6.17068 7.44039 6.88533C7.02778 7.59998 6.91458 8.44882 7.12551 9.24662C7.33643 10.0444 7.85435 10.7264 8.56625 11.1438C8.6425 11.1875 8.72375 11.2137 8.80125 11.25C8.72375 11.2863 8.6425 11.3125 8.56625 11.3562C7.85435 11.7736 7.33643 12.4556 7.12551 13.2534C6.91458 14.0512 7.02778 14.9 7.44039 15.6147C7.85301 16.3293 8.53154 16.8518 9.32792 17.068C10.1243 17.2842 10.9739 17.1766 11.6912 16.7688C11.7687 16.725 11.83 16.6675 11.9012 16.6175C11.8938 16.7037 11.875 16.7875 11.875 16.875C11.875 17.7038 12.2042 18.4987 12.7903 19.0847C13.3763 19.6708 14.1712 20 15 20C15.8288 20 16.6237 19.6708 17.2097 19.0847C17.7958 18.4987 18.125 17.7038 18.125 16.875C18.125 16.7875 18.1062 16.7037 18.0988 16.6175C18.17 16.6675 18.2313 16.725 18.3088 16.7688C19.0261 17.1766 19.8757 17.2842 20.6721 17.068C21.4685 16.8518 22.147 16.3293 22.5596 15.6147C22.9722 14.9 23.0854 14.0512 22.8745 13.2534C22.6636 12.4556 22.1456 11.7736 21.4338 11.3562C21.3575 11.3125 21.2762 11.2863 21.1987 11.25C21.2775 11.2137 21.3575 11.1875 21.4338 11.1438C21.7892 10.9387 22.1008 10.6655 22.3508 10.34C22.6007 10.0145 22.7841 9.64293 22.8904 9.24653C22.9967 8.85013 23.0239 8.43668 22.9705 8.02977C22.917 7.62286 22.7839 7.23047 22.5788 6.875ZM15 15C14.0054 15 13.0516 14.6049 12.3483 13.9017C11.6451 13.1984 11.25 12.2446 11.25 11.25C11.25 10.2554 11.6451 9.30161 12.3483 8.59835C13.0516 7.89509 14.0054 7.5 15 7.5C15.9946 7.5 16.9484 7.89509 17.6517 8.59835C18.3549 9.30161 18.75 10.2554 18.75 11.25C18.75 12.2446 18.3549 13.1984 17.6517 13.9017C16.9484 14.6049 15.9946 15 15 15Z" fill="#666666"/>
-                            </svg>
-                             1 Balcony</li>
-                    </ul>
-                </div>
-                <div class="properties-content-style properties-street-address">
-                    <h6>Street Address</h6>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                </div>
-                <div class="properties-content-style properties-other-details">
-                    <h6>Other Details</h6>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-                <div class="properties-content-style properties-owner">
-                   <div class="prop-owner-with-img-align">
-                    <div class="content">
-                        <h6>Owner</h6>
-                        <h2>Michel Chill</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <div class="many-forms-fields-box">
+                        <div class="input-box">
+                            <label for="">Name</label>
+                            <input type="text" placeholder="Type Here">
+                        </div>
+                        <div class="input-box simple-select">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <label for="cars">Category</label>
+                                <!-- Button to trigger the modal -->
+                                <button type="button" id="create-category"
+                                    class="fa fa-plus btn btn-primary btn-sm px-3 py-2" style="white-space: nowrap"
+                                    data-bs-toggle="modal" data-bs-target="#categoryModal">Add Category</button>
+                            </div>
+                            <select name="cars" id="cars" placeholder="Type Here">
+                                <!-- Categories will be appended here -->
+                            </select>
+                        </div>
+                        <div class="input-box progress-bar">
+
+                            <div class="progress-container">
+                                <input type="range" id="progressInput" min="10" max="2500" value="10"
+                                    step="10">
+                            </div>
+                            <div class="numbers-main-bb">
+                                <input type="number" id="numberInput1" class="number-input" value="10"
+                                    min="10" max="500" step="10">
+                                <input type="number" id="numberInput2" class="number-input" value="500"
+                                    min="500" max="1000" step="10">
+                                <input type="number" id="numberInput3" class="number-input" value="1000"
+                                    min="1000" max="1500" step="10">
+                                <input type="number" id="numberInput4" class="number-input" value="1500"
+                                    min="1500" max="2000" step="10">
+                                <input type="number" id="numberInput5" class="number-input" value="2000"
+                                    min="2000" max="2500" step="10">
+                            </div>
+                            <div class="progress-number" id="progressNumber">10</div>
+
+
+                        </div>
+
+                        <div class="many-check-box">
+                            <p>Rooms & Features</p>
+
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="bed-room" name="bed-room" value="rooms-and-features">
+                                <label for="bed-room"> Bed Room</label>
+                            </div>
+
+
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="attach-bathroom" name="attach-bathroom"
+                                    value="rooms-and-features">
+                                <label for="attach-bathroom">Attach Bathroom</label>
+                            </div>
+
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="separate-bathroom" name="separate-bathroom"
+                                    value="rooms-and-features">
+                                <label for="separate-bathroom">Separate Bathroom</label>
+                            </div>
+
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="balcony" name="balcony" value="rooms-and-features">
+                                <label for="balcony">Balcony</label>
+                            </div>
+
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="swimming-pool" name="swimming-pool"
+                                    value="rooms-and-features">
+                                <label for="swimming-pool">Swimming Pool</label>
+                            </div>
+
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="in-house-swimming-pool" name="in-house-swimming-pool"
+                                    value="rooms-and-features">
+                                <label for="in-house-swimming-pool">In House Swimming Pool</label>
+                            </div>
+
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="garden" name="garden" value="rooms-and-features">
+                                <label for="garden">Garden</label>
+                            </div>
+
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="parking" name="parking" value="rooms-and-features">
+                                <label for="parking">Parking</label>
+                            </div>
+
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="in-house-garage" name="in-house-garage"
+                                    value="rooms-and-features">
+                                <label for="in-house-garage">In House Garage</label>
+                            </div>
+
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="living-room" name="living-room"
+                                    value="rooms-and-features">
+                                <label for="living-room">Living Room</label>
+                            </div>
+
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="tv-launch" name="tv-launch" value="rooms-and-features">
+                                <label for="tv-launch">TV Launch</label>
+                            </div>
+
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="open-kitchen" name="open-kitchen"
+                                    value="rooms-and-features">
+                                <label for="open-kitchen">Open Kitchen</label>
+                            </div>
+
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="separate-kitchen" name="separate-kitchen"
+                                    value="rooms-and-features">
+                                <label for="separate-kitchen">Separate Kitchen</label>
+                            </div>
+
+                        </div>
+
+                        <div class="input-box  mt-3">
+                            <label for="">Allowed Pets</label>
+                            <select class="js-example-basic-multiple" multiple="multiple" style="width: 300px;"
+                                id="services">
+                                <option value="AL">Alabama</option>
+                                <option value="WY">Wyoming</option>
+                                <option value="FL">Florida</option>
+                                <option value="NY">New York</option>
+                                <option value="CA">California</option>
+                            </select>
+
+                        </div>
+
+                        <div class="many-check-box mt-3">
+                            <p>Rent To Who</p>
+
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="dont-drink-alcohol" name="dont-drink-alcohol"
+                                    value="rooms-and-features">
+                                <label for="dont-drink-alcohol"> Don’t Drink Alcohol</label>
+                            </div>
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="dont-smoke" name="dont-smoke" value="rooms-and-features">
+                                <label for="dont-smoke"> Don’t Smoke</label>
+                            </div>
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="dont-rape-any-one" name="dont-rape-any-one"
+                                    value="rooms-and-features">
+                                <label for="dont-rape-any-one"> Don’t Rape Any One</label>
+                            </div>
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="dont-sex-addicted" name="dont-sex-addicted"
+                                    value="rooms-and-features">
+                                <label for="dont-sex-addicted"> Don’t Sex Addicted</label>
+                            </div>
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="dont-have-any-criminal Record"
+                                    name="dont-have-any-criminal Record" value="rooms-and-features">
+                                <label for="dont-have-any-criminal Record"> Don’t Have Any Criminal Record</label>
+                            </div>
+                            <div class="paren-check-box">
+                                <input type="checkbox" id="dont-have-weapons" name="dont-have-weapons"
+                                    value="rooms-and-features">
+                                <label for="dont-have-weapons"> Don’t Have Weapons</label>
+                            </div>
+
+
+                        </div>
+
+                        <div class="input-box">
+                            <label for="">Number Of Bedrooms</label>
+                            <input type="text" placeholder="01">
+                        </div>
+
+
+                        <div class="input-box textarea">
+                            <label for="">Other Details</label>
+                            <textarea placeholder="Type Here"></textarea>
+                        </div>
+
+                        <div class="input-box simple-select">
+                            <label for="cars">Availability</label>
+                            <select name="cars" id="cars" placeholder="Type Here">
+                                <option value="Category-01">Type Here-01</option>
+                                <option value="Type Here-02">Type Here-02</option>
+                                <option value="Type Here-03">Type Here-03</option>
+                                <option value="Type Here-04">Type Here-04</option>
+                            </select>
+                        </div>
+
+                        <div class="input-box simple-select">
+                            <label for="cars">Price/Rent</label>
+                            <select name="cars" id="cars" placeholder="Type Here">
+                                <option value="Price/Rent-01">Price/Rent-01</option>
+                                <option value="Price/Rent-02">Price/Rent-02</option>
+                                <option value="Price/Rent-03">Price/Rent-03</option>
+                                <option value="Price/Rent-04">Price/Rent-04</option>
+                            </select>
+                        </div>
+
+                        <div class="two-btn-inline">
+                            <button class="t-btn">Save Changes</button>
+                            <button class="t-btn t-btn-gray"> Discard</button>
+                        </div>
 
                     </div>
-                    <div class="img-box">
-                        <img src="{{ asset('assets/images/prop-owner.png') }}" alt="owner">
+                </form>
+                <!-- Modal for adding a new category -->
+                <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="categoryModalLabel">Add New Category</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="categoryForm">
+                                    <div class="mb-3">
+                                        <label for="new-category" class="form-label">Category Name</label>
+                                        <input type="text" class="form-control" id="new-category"
+                                            placeholder="Enter category name" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Add Category</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                   </div>
-                   <div class="owner-details-links">
-                    <ul>
-                        <li><a href="tel:+921 0055 1122336"><svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19.1337 13.3663C19.0177 13.2501 18.8799 13.1579 18.7283 13.095C18.5767 13.0321 18.4141 12.9997 18.2499 12.9997C18.0858 12.9997 17.9232 13.0321 17.7716 13.095C17.6199 13.1579 17.4822 13.2501 17.3662 13.3663L15.3737 15.3587C14.4499 15.0837 12.7262 14.4587 11.6337 13.3663C10.5412 12.2738 9.91618 10.55 9.64118 9.62625L11.6337 7.63375C11.7499 7.51776 11.842 7.38001 11.9049 7.22837C11.9678 7.07672 12.0002 6.91417 12.0002 6.75C12.0002 6.58583 11.9678 6.42328 11.9049 6.27163C11.842 6.11999 11.7499 5.98223 11.6337 5.86625L6.63368 0.86625C6.51769 0.750067 6.37994 0.657895 6.2283 0.595007C6.07665 0.532118 5.9141 0.499748 5.74993 0.499748C5.58576 0.499748 5.42321 0.532118 5.27156 0.595007C5.11992 0.657895 4.98216 0.750067 4.86618 0.86625L1.47618 4.25625C1.00118 4.73125 0.733679 5.38375 0.743679 6.05C0.772429 7.83 1.24368 14.0125 6.11618 18.885C10.9887 23.7575 17.1712 24.2275 18.9524 24.2575H18.9874C19.6474 24.2575 20.2712 23.9975 20.7437 23.525L24.1337 20.135C24.2499 20.019 24.342 19.8813 24.4049 19.7296C24.4678 19.578 24.5002 19.4154 24.5002 19.2512C24.5002 19.0871 24.4678 18.9245 24.4049 18.7729C24.342 18.6212 24.2499 18.4835 24.1337 18.3675L19.1337 13.3663ZM18.9749 21.7562C17.4149 21.73 12.0774 21.3113 7.88368 17.1162C3.67618 12.9088 3.26868 7.5525 3.24368 6.02375L5.74993 3.5175L8.98243 6.75L7.36618 8.36625C7.21926 8.51306 7.11123 8.69417 7.05187 8.89321C6.99251 9.09225 6.98368 9.30294 7.02618 9.50625C7.05618 9.65 7.78993 13.0587 9.86493 15.1337C11.9399 17.2087 15.3487 17.9425 15.4924 17.9725C15.6956 18.0162 15.9065 18.0081 16.1057 17.9489C16.305 17.8897 16.4861 17.7813 16.6324 17.6337L18.2499 16.0175L21.4824 19.25L18.9749 21.7562Z" fill="#777777"/>
-                            </svg>
-                            +921 0055 1122336</a></li>
-                        <li><a href="mailto:michel@example.com"><svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M23 0H3C1.62125 0 0.5 1.12125 0.5 2.5V17.5C0.5 18.8787 1.62125 20 3 20H23C24.3787 20 25.5 18.8787 25.5 17.5V2.5C25.5 1.12125 24.3787 0 23 0ZM23 2.5V3.13875L13 10.9175L3 3.14V2.5H23ZM3 17.5V6.305L12.2325 13.4862C12.4514 13.6582 12.7217 13.7516 13 13.7516C13.2783 13.7516 13.5486 13.6582 13.7675 13.4862L23 6.305L23.0025 17.5H3Z" fill="#777777"/>
-                            </svg>
-                            michel@example.com</a></li>
-                    </ul>
-                   </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
+
+        $(".js-example-basic-multiple").select2({
+            placeholder: "Select a state",
+            allowClear: true
+        });
+        $(".js-example-placeholder-multiple").select2({
+            placeholder: "Select a state"
+        });
+    </script>
+
+
+
+    <script>
+        const progressInput = document.getElementById('progressInput');
+        const progressNumber = document.getElementById('progressNumber');
+
+        // Individual input boxes
+        const numberInput1 = document.getElementById('numberInput1');
+        const numberInput2 = document.getElementById('numberInput2');
+        const numberInput3 = document.getElementById('numberInput3');
+        const numberInput4 = document.getElementById('numberInput4');
+        const numberInput5 = document.getElementById('numberInput5');
+
+        // Listen to slider changes and update corresponding number inputs
+        progressInput.addEventListener('input', function() {
+            const progress = parseInt(progressInput.value);
+            updateProgress(progress);
+            changeBarColor(progressInput.value);
+            changeInputColors(progress); // Change input box colors
+        });
+
+        // Listen to number input changes to update progress bar
+        numberInput1.addEventListener('input', function() {
+            const value = parseInt(this.value);
+            if (value >= 10 && value < 500) {
+                progressInput.value = value;
+                updateProgress(value);
+            }
+        });
+
+        numberInput2.addEventListener('input', function() {
+            const value = parseInt(this.value);
+            if (value >= 500 && value < 1000) {
+                progressInput.value = value;
+                updateProgress(value);
+            }
+        });
+
+        numberInput3.addEventListener('input', function() {
+            const value = parseInt(this.value);
+            if (value >= 1000 && value < 1500) {
+                progressInput.value = value;
+                updateProgress(value);
+            }
+        });
+
+        numberInput4.addEventListener('input', function() {
+            const value = parseInt(this.value);
+            if (value >= 1500 && value < 2000) {
+                progressInput.value = value;
+                updateProgress(value);
+            }
+        });
+
+        numberInput5.addEventListener('input', function() {
+            const value = parseInt(this.value);
+            if (value >= 2000) {
+                progressInput.value = value;
+                updateProgress(value);
+            }
+        });
+
+        // Function to update the progress and which number input is active
+        function updateProgress(value) {
+            progressNumber.innerText = value;
+
+            // Update number inputs based on the current progress value
+            if (value >= 10 && value < 500) {
+                numberInput1.value = value;
+            } else if (value >= 500 && value < 1000) {
+                numberInput2.value = value;
+            } else if (value >= 1000 && value < 1500) {
+                numberInput3.value = value;
+            } else if (value >= 1500 && value < 2000) {
+                numberInput4.value = value;
+            } else if (value >= 2000) {
+                numberInput5.value = value;
+            }
+        }
+
+        // Change the color of the progress bar based on the value
+        function changeBarColor(value) {
+            const maxValue = parseInt(progressInput.max);
+            const percentage = (value / maxValue) * 100;
+
+            // Set a color based on the percentage
+            if (percentage <= 50) {
+                progressInput.style.background = `linear-gradient(90deg, #0077B6 ${percentage}%, #f3f3f3 ${percentage}%)`;
+            } else {
+                progressInput.style.background = `linear-gradient(90deg, #0077B6 ${percentage}%, #f3f3f3 ${percentage}%)`;
+            }
+        }
+
+        // Change the background color of the input box corresponding to the progress value
+        function changeInputColors(value) {
+            // Reset background color of all input boxes
+            resetInputs();
+
+            // Change color based on the progress value
+            if (value >= 10 && value < 500) {
+                numberInput1.style.backgroundColor = '#0077B6'; // Change color for 10-500 range
+            } else if (value >= 500 && value < 1000) {
+                numberInput2.style.backgroundColor = '#0077B6'; // Change color for 500-1000 range
+            } else if (value >= 1000 && value < 1500) {
+                numberInput3.style.backgroundColor = '#0077B6'; // Change color for 1000-1500 range
+            } else if (value >= 1500 && value < 2000) {
+                numberInput4.style.backgroundColor = '#0077B6'; // Change color for 1500-2000 range
+            } else if (value >= 2000) {
+                numberInput5.style.backgroundColor = '#0077B6'; // Change color for 2000+ range
+            }
+        }
+
+        // Reset all number inputs to avoid multiple updates
+        function resetInputs() {
+            numberInput1.style.backgroundColor = '';
+            numberInput2.style.backgroundColor = '';
+            numberInput3.style.backgroundColor = '';
+            numberInput4.style.backgroundColor = '';
+            numberInput5.style.backgroundColor = '';
+        }
+
+        // Start progress on click (demo)
+        function startProgress() {
+            const intervals = [10, 500, 1000, 1500, 2000]; // The progress increments
+            let index = 0;
+
+            const progressInterval = setInterval(() => {
+                if (index < intervals.length) {
+                    const progress = intervals[index];
+                    progressInput.value = progress;
+                    updateProgress(progress);
+                    changeBarColor(progress);
+                    changeInputColors(progress); // Update input box colors
+                    index++;
+                } else {
+                    clearInterval(progressInterval); // Stop when all increments are done
+                }
+            }, 1000); // Update every second
+        }
+    </script>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const imageContainer = document.getElementById('imageContainer');
+        let selectedImages = [];
+
+        fileInput.addEventListener('change', (event) => {
+            const files = Array.from(event.target.files);
+
+            if (selectedImages.length + files.length > 50) {
+                alert("You can only upload a maximum of 50 images.");
+                return;
+            }
+
+            files.forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    if (selectedImages.length < 50) {
+                        selectedImages.push(file);
+                        displayImage(file);
+                    }
+                } else {
+                    alert("Only image files are allowed.");
+                }
+            });
+
+            checkImageCount();
+        });
+
+        function displayImage(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imagePreview = document.createElement('div');
+                imagePreview.classList.add('image-preview');
+
+                const img = document.createElement('img');
+                img.src = e.target.result;
+
+                const closeButton = document.createElement('button');
+                closeButton.classList.add('close-btn');
+                closeButton.innerHTML = 'X';
+                closeButton.onclick = function() {
+                    imageContainer.removeChild(imagePreview);
+                    selectedImages = selectedImages.filter(img => img !== file);
+                    checkImageCount();
+                };
+
+                imagePreview.appendChild(img);
+                imagePreview.appendChild(closeButton);
+                imageContainer.appendChild(imagePreview);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function checkImageCount() {
+            if (selectedImages.length < 10) {
+                alert('You need to upload at least 10 images.');
+            }
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Handle form submission inside the modal
+            $('#categoryForm').on('submit', function(event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+
+                var newCategory = $('#new-category').val();
+                if (newCategory) {
+                    $.ajax({
+                        url: "{{ route('landlord.category.store') }}", // Update to your route
+                        method: "POST",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            name: newCategory
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                // Add the new category to the select dropdown
+                                $('#cars').append(
+                                    `<option value="${response.category.id}" selected>${response.category.name}</option>`
+                                );
+
+                                // Clear the input field and close the modal
+                                $('#new-category').val('');
+                                $('#categoryModal').modal('hide'); // Hide the modal
+                            } else {
+                                alert(response.message);
+                            }
+                        },
+                        error: function(error) {
+                            alert('Error creating category');
+                        }
+                    });
+                } else {
+                    alert('Please enter a category name');
+                }
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.8/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 @endsection
