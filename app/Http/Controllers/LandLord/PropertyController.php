@@ -5,6 +5,9 @@ namespace App\Http\Controllers\LandLord;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Feature;
+use App\Models\Pet;
+use App\Models\RentToWho;
 use Illuminate\Support\Facades\Auth;
 
 class PropertyController extends Controller
@@ -16,7 +19,11 @@ class PropertyController extends Controller
 
     public function add_property()
     {
-        return view('Dashboard.landlord.add_property');
+       $features = Feature::select('name','id')->get();
+       $pets = Pet::select('name','id')->get();
+       $rentWhos = RentToWho::select('name','id')->get();
+
+        return view('Dashboard.landlord.add_property' ,compact('features','pets','rentWhos'));
     }
 
     public function profile()

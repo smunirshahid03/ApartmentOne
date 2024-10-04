@@ -62,139 +62,42 @@
 
                             </div>
 
+                            <!-- Rooms & Features Section -->
                             <div class="many-check-box">
                                 <p>Rooms & Features</p>
 
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="bed-room" name="bed-room" value="rooms-and-features">
-                                    <label for="bed-room"> Bed Room</label>
-                                </div>
-
-
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="attach-bathroom" name="attach-bathroom"
-                                        value="rooms-and-features">
-                                    <label for="attach-bathroom">Attach Bathroom</label>
-                                </div>
-
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="separate-bathroom" name="separate-bathroom"
-                                        value="rooms-and-features">
-                                    <label for="separate-bathroom">Separate Bathroom</label>
-                                </div>
-
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="balcony" name="balcony" value="rooms-and-features">
-                                    <label for="balcony">Balcony</label>
-                                </div>
-
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="swimming-pool" name="swimming-pool"
-                                        value="rooms-and-features">
-                                    <label for="swimming-pool">Swimming Pool</label>
-                                </div>
-
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="in-house-swimming-pool" name="in-house-swimming-pool"
-                                        value="rooms-and-features">
-                                    <label for="in-house-swimming-pool">In House Swimming Pool</label>
-                                </div>
-
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="garden" name="garden" value="rooms-and-features">
-                                    <label for="garden">Garden</label>
-                                </div>
-
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="parking" name="parking" value="rooms-and-features">
-                                    <label for="parking">Parking</label>
-                                </div>
-
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="in-house-garage" name="in-house-garage"
-                                        value="rooms-and-features">
-                                    <label for="in-house-garage">In House Garage</label>
-                                </div>
-
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="living-room" name="living-room"
-                                        value="rooms-and-features">
-                                    <label for="living-room">Living Room</label>
-                                </div>
-
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="tv-launch" name="tv-launch" value="rooms-and-features">
-                                    <label for="tv-launch">TV Launch</label>
-                                </div>
-
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="open-kitchen" name="open-kitchen"
-                                        value="rooms-and-features">
-                                    <label for="open-kitchen">Open Kitchen</label>
-                                </div>
-
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="separate-kitchen" name="separate-kitchen"
-                                        value="rooms-and-features">
-                                    <label for="separate-kitchen">Separate Kitchen</label>
-                                </div>
-
+                                @foreach ($features as $feature)
+                                    <div class="paren-check-box">
+                                        <input type="checkbox" id="feature-{{ $feature->id }}" name="features[]"
+                                            value="{{ $feature->id }}">
+                                        <label for="feature-{{ $feature->id }}">{{ $feature->name }}</label>
+                                    </div>
+                                @endforeach
                             </div>
 
-                            <div class="input-box  mt-3">
+                            <!-- Allowed Pets Section -->
+                            <div class="input-box mt-3">
                                 <label for="">Allowed Pets</label>
                                 <select class="js-example-basic-multiple" multiple="multiple" style="width: 300px;"
-                                    id="services">
-                                    <option value="AL">Alabama</option>
-                                    <option value="WY">Wyoming</option>
-                                    <option value="FL">Florida</option>
-                                    <option value="NY">New York</option>
-                                    <option value="CA">California</option>
+                                    name="pets[]">
+                                    @foreach ($pets as $pet)
+                                        <option value="{{ $pet->id }}">{{ $pet->name }}</option>
+                                    @endforeach
                                 </select>
-
                             </div>
 
+                            <!-- Rent To Who Section -->
                             <div class="many-check-box mt-3">
                                 <p>Rent To Who</p>
 
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="dont-drink-alcohol" name="dont-drink-alcohol"
-                                        value="rooms-and-features">
-                                    <label for="dont-drink-alcohol"> Don’t Drink Alcohol</label>
-                                </div>
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="dont-smoke" name="dont-smoke" value="rooms-and-features">
-                                    <label for="dont-smoke"> Don’t Smoke</label>
-                                </div>
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="dont-rape-any-one" name="dont-rape-any-one"
-                                        value="rooms-and-features">
-                                    <label for="dont-rape-any-one"> Don’t Rape Any One</label>
-                                </div>
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="dont-sex-addicted" name="dont-sex-addicted"
-                                        value="rooms-and-features">
-                                    <label for="dont-sex-addicted"> Don’t Sex Addicted</label>
-                                </div>
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="dont-have-any-criminal Record"
-                                        name="dont-have-any-criminal Record" value="rooms-and-features">
-                                    <label for="dont-have-any-criminal Record"> Don’t Have Any Criminal Record</label>
-                                </div>
-                                <div class="paren-check-box">
-                                    <input type="checkbox" id="dont-have-weapons" name="dont-have-weapons"
-                                        value="rooms-and-features">
-                                    <label for="dont-have-weapons"> Don’t Have Weapons</label>
-                                </div>
-
-
+                                @foreach ($rentWhos as $rentWho)
+                                    <div class="paren-check-box">
+                                        <input type="checkbox" id="rentWho-{{ $rentWho->id }}" name="rent_whos[]"
+                                            value="{{ $rentWho->id }}">
+                                        <label for="rentWho-{{ $rentWho->id }}">{{ $rentWho->name }}</label>
+                                    </div>
+                                @endforeach
                             </div>
-
-                            <div class="input-box">
-                                <label for="">Number Of Bedrooms</label>
-                                <input type="text" placeholder="01">
-                            </div>
-
 
                             <div class="input-box textarea">
                                 <label for="">Other Details</label>
@@ -204,21 +107,14 @@
                             <div class="input-box simple-select">
                                 <label for="cars">Availability</label>
                                 <select name="cars" id="cars" placeholder="Type Here">
-                                    <option value="Category-01">Type Here-01</option>
-                                    <option value="Type Here-02">Type Here-02</option>
-                                    <option value="Type Here-03">Type Here-03</option>
-                                    <option value="Type Here-04">Type Here-04</option>
+                                    <option value="0" >Booked</option>
+                                    <option value="1">Available</option>
                                 </select>
                             </div>
 
                             <div class="input-box simple-select">
                                 <label for="cars">Price/Rent</label>
-                                <select name="cars" id="cars" placeholder="Type Here">
-                                    <option value="Price/Rent-01">Price/Rent-01</option>
-                                    <option value="Price/Rent-02">Price/Rent-02</option>
-                                    <option value="Price/Rent-03">Price/Rent-03</option>
-                                    <option value="Price/Rent-04">Price/Rent-04</option>
-                                </select>
+                               <input type="text" placeholder="price" name="price" id="price">
                             </div>
 
                             <div class="two-btn-inline">

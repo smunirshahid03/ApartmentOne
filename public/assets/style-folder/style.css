@@ -3844,5 +3844,7 @@ width: 100%;
 
 }
 
-
+.input-box.progress-bar {
+    background-color: #ff000000;
+}
 
