@@ -2,6 +2,10 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
+        <div class="page-detail-box">
+            <p>Welcome</p>
+            {{-- <h6>{{ Auth::user()->name }}</h6> --}}
+        </div>
         <div class="credit-report-box">
             <div class="two-things-align">
                 <div class="box">

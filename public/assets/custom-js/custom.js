@@ -47,18 +47,39 @@ document.querySelectorAll('.accordion-button').forEach(button => {
   });
 
   // Fancybox Config
-$('[data-fancybox="gallery"]').fancybox({
-    buttons: [
-      "slideShow",
-      "thumbs",
-      "zoom",
-      "fullScreen",
-      "share",
-      "close"
-    ],
-    loop: false,
-    protect: true
-  });
+// $('[data-fancybox="gallery"]').fancybox({
+//     buttons: [
+//       "slideShow",
+//       "thumbs",
+//       "zoom",
+//       "fullScreen",
+//       "share",
+//       "close"
+//     ],
+//     loop: false,
+//     protect: true
+//   });
+
+// Function to hide text when screen width is <= 575px
+function hideAnchorTextForSmallScreens() {
+    let anchorElements = document.querySelectorAll('ul li a');
+
+    anchorElements.forEach((anchor, index) => {
+        if (index !== anchorElements.length - 1) { // Skip the last anchor element
+            anchor.childNodes.forEach((node) => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    let span = document.createElement('span');  // Wrap text in a span
+                    span.classList.add('hide-text');
+                    span.textContent = node.textContent;  // Keep the text inside span
+                    node.replaceWith(span);
+                }
+            });
+        }
+    });
+}
+
+// Call the function on page load
+hideAnchorTextForSmallScreens();
 
 
 

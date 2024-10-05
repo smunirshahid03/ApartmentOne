@@ -2553,7 +2553,7 @@ margin-top: -5px;
 
 .income-reports-sec-page .income-reports-two-boxes .parent-box.blue-box {
     background-color: #0077B6;
-    color: white !important;!i;!;
+    color: white !important;
     border-color: #0077B6;
 }
 
@@ -2698,6 +2698,16 @@ table {
     color: #0077B6;
 }
 
+.main-dashboard-header .hamburger-menu{
+    display: none;
+}
+
+.col-lg-12 .page-detail-box {
+    margin-bottom: 20px;
+    display: none;
+}
+
+
 /* landlord-css-end */
 
 .col-lg-8 {
@@ -2718,6 +2728,7 @@ table {
     max-width: 1420px;
 }
 }
+
 @media (max-width: 1600px){
     .home-sec-01 {
     height: 550px;
@@ -2814,6 +2825,72 @@ font-size: 20px;
 .login-register-sec {
 padding: 100px 0;
 }
+
+/* dashbord-re-css-start */
+
+.main-dashboard-header .page-detail-box p {
+    font-size: 16px;
+}
+
+.main-dashboard-header .right-header-links ul li a {
+    column-gap: 2px;
+        font-size: 16px;
+}
+
+.main-dashboard-header .right-header-links ul li a.user-profile-link img {
+    width: 35px;
+    height: 35px;
+}
+.dashboard-main .left-panel .left-panel-menu h5 {
+    font-size: 20px;
+
+}
+
+.dashboard-main .left-panel .left-panel-menu ul li a {
+    padding: 5px;
+    column-gap: 5px;
+    font-size: 16px;
+}
+
+.dashboard-main .left-panel .left-panel-menu ul li a svg {
+    width: 20px;
+    height: 20px;
+}
+
+.main-dashboard-header .right-header-links ul li a svg {
+    width: 20px;
+    height: 20px;
+}
+.t-btn.t-btn-blue {
+    padding: 7px 20px;
+    margin-top: 15px;
+    font-size: 14px;
+    align-items: center;
+}
+.credit-report-box {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.two-things-align .box h6 {
+    font-size: 25px;
+}
+.credit-report-box .four-reports-align .number-box h6 {
+    font-size: 35px;
+}
+.notification-box-main {
+    padding: 30px 20px;
+    margin-top: 15px;
+}
+
+.dashboard-main {
+    padding: 10px;
+}
+.container-fluid {
+    padding: 5px 10px;
+}
+
+
+/* dashbord-re-css-end */
 
 }
 
@@ -2975,6 +3052,59 @@ padding: 50px 0;
 font-size: 14px;
 }
 
+/* dashbord-re-css-start */
+
+.dashboard-main .left-panel {
+    padding: 15px;
+    padding-right: 15px;
+}
+
+.dashboard-main .left-panel .left-panel-menu ul li a {
+    padding: 5px;
+    column-gap: 5px;
+    font-size: 14px;
+}
+
+.two-things-align .box h6 {
+    font-size: 20px;
+}
+
+.t-btn.t-btn-blue.t-btn-svg {
+    column-gap: 5px;
+}
+
+.t-btn.t-btn-blue {
+    padding: 5px 15px;
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+.credit-report-box .four-reports-align .number-box {
+    max-width: 100px;
+    text-align: center;
+}
+.credit-report-box .four-reports-align .number-box h6 {
+    font-size: 25px;
+}
+.credit-report-box .four-reports-align .number-box p {
+    font-size: 12px;
+}
+.two-things-align .box p {
+    font-size: 14px;
+}
+.notification-box-main .content-box p {
+    font-size: 14px;
+}
+
+.notification-box-main .two-btns-inline button {
+    padding: 4px 15px;
+    font-size: 13px;
+}
+
+
+
+/* dashbord-re-css-end */
+
 
 
 
@@ -3111,7 +3241,31 @@ margin-bottom: 20px;
 header li.drop-down-menu:hover ul {
 display: block !important;
 }
+
+/* dashbord-re-css-start */
+
+.two-things-align .box h6 {
+    font-size: 18px;
 }
+
+.notification-box-main .content-box h5 {
+    font-size: 18px;
+}
+
+.main-dashboard-header .right-header-links ul li a {
+    font-size: 13px;
+}
+
+.main-dashboard-header .page-detail-box p {
+    font-size: 14px;
+}
+}
+
+
+
+
+/* dashbord-re-css-end */
+
 @media (max-width: 991px){
 
     .home-sec-01 {
@@ -3390,11 +3544,67 @@ background-color: #F1F1F1;
 padding: 15px 0;
 }
 
+/* dashbord-re-css-start */
+
+.main-dashboard-header #menu__toggle:checked ~ .menu__box {
+    left: auto;
+    right: 0;
+}
+
+.left-panel {
+    display: none;
+}
 
 
+.main-dashboard-header  label.menu__btn {
+    margin-top: -20px;
+}
+
+.main-dashboard-header .hamburger-menu{
+    display: block;
+}
+
+.main-dashboard-header ul.menu__box {
+    padding: 20px !important;
+}
+
+.main-dashboard-header ul.menu__box li {
+    margin-bottom: 20px;
+}
+
+.main-dashboard-header ul.menu__box li a {
+    color: black;
+}
+
+.main-dashboard-header ul.menu__box li a svg path {
+    fill: black;
+}
+
+.main-dashboard-header ul.menu__box li a.t-btn.t-btn-blue.t-btn-svg svg path {
+    fill: white;
+}
+
+.main-dashboard-header ul.menu__box li a.t-btn.t-btn-blue.t-btn-svg {
+    color: white;
+}
+
+.col-lg-12 .page-detail-box {
+    display: block;
+}
+
+.main-dashboard-header .page-detail-box {
+    display: none;
+}
+
+
+
+
+
+/* dashbord-re-css-end */
 
 
 }
+
 @media (max-width: 767px){
     .home-sec-01 {
     height: 400px;
@@ -3583,6 +3793,73 @@ width: 100%;
 padding: 50px 0;
 text-align: center;
 }
+
+/* dashbord-re-css-start */
+
+
+.main-dashboard-header .right-header-links ul {
+    column-gap: 10px;
+}
+
+.main-dashboard-header .right-header-links ul li a.user-profile-link img {
+    width: 30px;
+    height: 30px;
+}
+
+.two-things-align .box h6 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+a.t-btn.t-btn-blue {
+    padding: 5px 20px;
+    margin-top: 15px;
+    font-size: 10px;
+}
+
+.t-btn.t-btn-blue.t-btn-svg svg {
+    width: 18px;
+    height: 18px;
+}
+
+.two-things-align .box p {
+    font-size: 12px;
+}
+
+.credit-report-box .four-reports-align .number-box h6 {
+    font-size: 20px;
+}
+.credit-report-box .four-reports-align .number-box p {
+    font-size: 10px;
+}
+
+.credit-report-box {
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.notification-box-main {
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.notification-box-main .content-box h5 {
+    font-size: 14px;
+}
+
+.notification-box-main .content-box p {
+    font-size: 12px;
+}
+
+.notification-box-main .close-btn-box a {
+    width: 30px;
+    height: 30px;
+}
+
+
+
+
+/* dashbord-re-css-end */
 
 }
 
@@ -3841,6 +4118,90 @@ text-align: center;
 .home-sec-02.home-sec-04.blog-des-sec-01 .row img {
 width: 100%;
 }
+
+.hide-text {
+    display: none;
+}
+
+.credit-report-box .two-things-align {
+    border-bottom: 1px solid #0000002b;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.credit-report-box .four-reports-align .number-box {
+    width: 45%;
+    border: 1px solid #0077b61c;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.credit-report-box .four-reports-align {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.two-things-align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+}
+
+.notification-box-main .content-box {
+    text-align: center;
+}
+
+.notification-box-main .two-btns-inline {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.container-fluid {
+    padding: 10px !important;
+}
+
+.col-lg-9 .col-lg-12::-webkit-scrollbar , .col-lg-9 .col-md-12::-webkit-scrollbar{
+
+    width: 5px;
+
+}
+
+.col-lg-9 .col-lg-12::-webkit-scrollbar-track  , .col-lg-9 .col-md-12::-webkit-scrollbar-track {
+
+    background: #f1f1f1;
+
+}
+
+.col-lg-9 .col-lg-12::-webkit-scrollbar-thumb  , .col-lg-9 .col-md-12::-webkit-scrollbar-thumb {
+
+    background: #0077b6;
+    border-radius: 10px;
+
+}
+
+.col-lg-12 .page-detail-box {
+    text-align: center;
+}
+.top-listing-parent-box.mt-5 {
+    margin-top: 30px !important;
+}
+
+
 
 }
 
