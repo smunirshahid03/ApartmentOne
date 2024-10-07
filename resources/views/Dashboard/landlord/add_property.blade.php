@@ -25,7 +25,7 @@
                             <div class="many-forms-fields-box">
                                 <div class="input-box">
                                     <label for="">Name</label>
-                                    <input type="text" placeholder="Type Here">
+                                    <input type="text" placeholder="Type Here" name="name">
                                 </div>
                                 <div class="input-box simple-select">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -46,8 +46,8 @@
                                 <div class="input-box progress-bar">
 
                                     <div class="progress-container">
-                                        <input type="range" id="progressInput" min="10" max="2500" value="10"
-                                            step="10">
+                                        <input type="range" id="progressInput" min="10" max="2500"
+                                            value="10" step="10">
                                     </div>
                                     <div class="numbers-main-bb">
                                         <input type="number" id="numberInput1" class="number-input" value="10"
@@ -61,7 +61,9 @@
                                         <input type="number" id="numberInput5" class="number-input" value="2000"
                                             min="2000" max="2500" step="10">
                                     </div>
-                                    <div class="progress-number" id="progressNumber">10</div>
+                                    <div class="progress-number" id="progressNumber"></div>
+                                    <!-- Hidden input to hold the credit_point value -->
+                                    <input type="hidden" name="credit_point" id="credit_point">
 
 
                                 </div>
@@ -92,36 +94,37 @@
 
                                 <!-- Rent To Who Section -->
                                 <div class="many-check-box mt-3">
-                                    @foreach ($rentWhos as $rentWho)
-                                        <div class="paren-check-box">
-                                            <label for="rent_whos">Rent to Who</label>
+                                    <label for="rent_whos">Rent to Who</label>
+                                    <div class="paren-check-box">
+                                        @foreach ($rentWhos as $rentWho)
                                             <input type="checkbox" id="rentWho-{{ $rentWho->id }}" name="rent_whos[]"
-                                                value="{{ $rentWho->id }}">
-                                            <label for="rentWho-{{ $rentWho->id }}">{{ $rentWho->name }}</label>
-                                        </div>
-                                    @endforeach
+                                                value="{{ $rentWho->id }}" class="mt-3">
+                                            <label for="rentWho-{{ $rentWho->id }}"
+                                                class="mt-3">{{ $rentWho->name }}</label>
+                                        @endforeach
+                                    </div>
                                 </div>
 
                                 <div class="input-box textarea">
                                     <label for="other_details">Other Details</label>
-                                    <textarea placeholder="Type Here"></textarea>
+                                    <textarea placeholder="Type Here" name="other_details"></textarea>
                                 </div>
 
                                 <div class="input-box simple-select">
                                     <label for="availability">Availability</label>
                                     <select name="availability" id="availability" placeholder="Type Here">
-                                        <option value="0" >Booked</option>
+                                        <option value="0">Booked</option>
                                         <option value="1">Available</option>
                                     </select>
                                 </div>
 
                                 <div class="input-box simple-select">
                                     <label for="price">Price/Rent</label>
-                                <input type="text" placeholder="price" name="price" id="price">
+                                    <input type="text" placeholder="price" name="price" id="price">
                                 </div>
 
                                 <div class="two-btn-inline">
-                                    <button class="t-btn">Save Changes</button>
+                                    <button type="button" class="t-btn" id="saveChangesBtn">Save Changes</button>
                                     <button class="t-btn t-btn-gray"> Discard</button>
                                 </div>
 
@@ -409,6 +412,62 @@
                     });
                 });
             </script>
+            <script>
+                $(document).ready(function() {
+                    $('#saveChangesBtn').click(function(e) {
+                        e.preventDefault();
+
+                        // Clear previous error messages
+                        $('.error-message').remove();
+                        $('input, select, textarea').removeClass('is-invalid');
+
+                        // Get the value from the progressNumber element
+                        var creditPoint = $('#progressNumber').text().trim();
+                        $('#credit_point').val(creditPoint);
+
+                        // Create a new FormData object
+                        var formData = new FormData($('#uploadForm')[0]);
+
+                        // Send the AJAX request
+                        $.ajax({
+                            url: "{{ route('landlord.store_property') }}", // Your Laravel route
+                            type: "POST",
+                            data: formData,
+                            contentType: false,
+                            processData: false,
+                            success: function(response) {
+                                // On success: clear the form and show a success toast
+                                $('#uploadForm')[0].reset(); // Reset the form
+                                // Optionally, you can use a toaster library for better UI
+                                toastr.success('Property created successfully!');
+                                window.location.href = "{{ route('landlord.properties') }}";
+                            },
+                            error: function(xhr, status, error) {
+                                // On error, handle validation messages
+                                var errors = xhr.responseJSON.errors;
+                                if (errors) {
+                                    $.each(errors, function(key, value) {
+                                        // Show error messages for each field
+                                        var input = $('[name="' + key + '"]');
+                                        input.addClass('is-invalid');
+                                        input.after('<span class="error-message text-danger">' +
+                                            value[0] + '</span>');
+                                    });
+
+                                    toastr.error(
+                                        'Error occurred while creating property. Please check the fields.'
+                                        );
+                                } else {
+                                    // Handle general errors
+                                    alert('Error occurred while creating property.');
+                                }
+                            }
+                        });
+                    });
+                });
+            </script>
+
+
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.8/popper.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>

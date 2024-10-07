@@ -9,6 +9,7 @@ class Property extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'name',
         'cat_id',
         'credit_point',
