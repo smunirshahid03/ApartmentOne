@@ -88,7 +88,7 @@
                 <div class="profile-basic-info-form">
                     <h3>Basic Info</h3>
                     @if (Auth::user()->hasRole('admin'))
-                    <form action="{{ route('landlord.profile.update') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="two-inputs-boxes-align">
                             <div class="input-box">
