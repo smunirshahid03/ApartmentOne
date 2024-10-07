@@ -2889,6 +2889,52 @@ padding: 100px 0;
     padding: 5px 10px;
 }
 
+.tab-pane.p-3.active {
+    padding: 0 !important;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .latest-child-box .box.property-detail-box .content h5 {
+    font-size: 20px;
+}
+.properties-page.admin-properties .latest-listing-parent-box .latest-child-box .box.property-detail-box .content p {
+    font-size: 12px;
+    max-width: 170px;
+    margin-right: 15px;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .box.two-person-align-box {
+    display: flex;
+    gap: 10px;
+}
+.properties-page.admin-properties .latest-listing-parent-box .box.two-person-align-box .sunb-person-child-box .content h5 {
+    font-size: 16px;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .two-btns-inline {
+    display: flex;
+    gap: 10px;
+    margin-left: 15px;
+}
+.properties-page.admin-properties .latest-listing-parent-box .two-btns-inline button {
+    padding: 5px 20px;
+    font-size: 13px;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .box.two-person-align-box .sunb-person-child-box .content p {
+    font-size: 12px;
+    max-width: 120px;
+}
+
+.properties-page .two-things-align ul.nav.nav-tabs {
+    column-gap: 10px;
+}
+
+.properties-page .two-things-align ul.nav.nav-tabs a.nav-link {
+    font-size: 13px;
+}
+
+
+
 
 /* dashbord-re-css-end */
 
@@ -3100,6 +3146,8 @@ font-size: 14px;
     padding: 4px 15px;
     font-size: 13px;
 }
+
+
 
 
 
@@ -4161,14 +4209,15 @@ width: 100%;
 }
 
 .notification-box-main .content-box {
-    text-align: center;
+    text-align: left;
+    padding-right: 10px;
 }
 
 .notification-box-main .two-btns-inline {
     display: flex;
     gap: 10px;
     margin-top: 10px;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .container-fluid {
@@ -4200,6 +4249,18 @@ width: 100%;
 .top-listing-parent-box.mt-5 {
     margin-top: 30px !important;
 }
+
+.right-header-links ul li:nth-child(-n+3) a {
+    text-indent: -9999px; /* Hides text */
+  }
+
+  .right-header-links ul li:nth-child(-n+3) svg {
+    display: inline-block; /* Keeps the icons visible */
+  }
+
+  .right-header-links ul li:last-child a {
+    text-indent: 0; /* Ensures "Admin" text is visible */
+  }
 
 
 
