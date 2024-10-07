@@ -19,11 +19,12 @@ class PropertyController extends Controller
 
     public function add_property()
     {
+        $categories = Category::select('name','id')->get();
        $features = Feature::select('name','id')->get();
        $pets = Pet::select('name','id')->get();
        $rentWhos = RentToWho::select('name','id')->get();
 
-        return view('Dashboard.landlord.add_property' ,compact('features','pets','rentWhos'));
+        return view('Dashboard.landlord.add_property' ,compact('features','pets','rentWhos','categories'));
     }
 
     public function profile()
