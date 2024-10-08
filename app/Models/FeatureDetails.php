@@ -14,4 +14,9 @@ class FeatureDetails extends Model
         'property_id',
         'quantity',
     ];
+
+    public function feature()
+    {
+        return $this->belongsTo(Feature::class);
+    }
 }

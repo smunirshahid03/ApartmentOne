@@ -22,4 +22,19 @@ class Property extends Model
     {
         return $this->belongsTo(Category::class, 'cat_id');
     }
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+      public function media(){
+        return $this->hasMany(Media::class);
+    }
+
+    public function pets(){
+        return $this->hasMany(PetDetails::class, 'id');
+    }
+    public function features()
+    {
+        return $this->hasMany(FeatureDetails::class);
+    }
 }

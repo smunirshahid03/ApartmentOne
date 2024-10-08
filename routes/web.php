@@ -73,7 +73,7 @@ Route::prefix('landlord')->name('landlord.')->group(function () {
     Route::get('property',[PropertyController::class,'properties'])->name('properties');
     Route::get('create/property',[PropertyController::class,'add_property'])->name('add_property');
     Route::post('store/property',[PropertyController::class,'store'])->name('store_property');
-    Route::get('/propertiesdetails',[PropertyController::class,'propertiesdetails'])->name('propertiesdetails');
+    Route::get('/propertiesdetails/{id}', [PropertyController::class, 'propertiesdetails'])->name('propertiesdetails');
     Route::post('store/category',[PropertyController::class,'category_store'])->name('category.store');
 
     // profile

@@ -8,7 +8,9 @@ use App\Models\Feature;
 use App\Models\Category;
 use App\Models\Property;
 use App\Models\RentToWho;
+use App\Models\PetDetails;
 use Illuminate\Http\Request;
+use App\Models\FeatureDetails;
 use App\Models\RentToWhoDetails;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -17,8 +19,11 @@ class PropertyController extends Controller
 {
     public function properties()
     {
-        return view('Dashboard.landlord.properties');
+        // Load the user with properties relationship
+        $properties = Property::with('user','media')->get();
+        return view('Dashboard.landlord.properties',compact('properties'));
     }
+
 
     public function add_property()
     {
@@ -87,7 +92,26 @@ class PropertyController extends Controller
                 ]);
             }
         }
+        // Handle the pets relationship
+        if ($request->has('pets') && is_array($request->pets)) {
+            foreach ($request->pets as $petId) {
+                PetDetails::create([
+                    'property_id' => $property->id,
+                    'pet_id' => $petId,
+                ]);
+            }
+        }
 
+        // Handle the features relationship
+        if ($request->has('features') && is_array($request->features)) {
+            foreach ($request->features as $featureId) {
+                FeatureDetails::create([
+                    'property_id' => $property->id,
+                    'feature_id' => $featureId,
+                    'quantity' => 1, // Default quantity, you can adjust this based on your needs
+                ]);
+            }
+        }
         // Return a success response
         return response()->json(['message' => 'Property created successfully!'], 201);
     }
@@ -110,9 +134,13 @@ class PropertyController extends Controller
             'category' => $category
         ]);
     }
-    public function propertiesdetails()
+    public function propertiesdetails($id)
     {
-        return view('Dashboard.landlord.propertiesdetails');
+        // Retrieve the specific property with its media, pets, and related features and feature details
+        $property = Property::with(['media', 'pets.pet', 'features.feature'])->findOrFail($id);
+
+        return view('Dashboard.landlord.propertiesdetails', compact('property'));
     }
+
 
 }
