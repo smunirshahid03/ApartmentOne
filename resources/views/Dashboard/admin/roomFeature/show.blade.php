@@ -63,6 +63,8 @@
 
                     <h3>Rooms & Features </h3>
                     <a class="t-btn t-btn-blue" href="{{ route('admin.room_features') }}">Add New</a>
+
+
                 </div>
                 <table class="table table-striped -mt-3">
                     <tr>

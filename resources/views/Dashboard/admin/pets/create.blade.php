@@ -60,7 +60,7 @@
                     </div>
                 @endif
 
-                <h3>Rooms & Features Create</h3>
+                <h3>Pets</h3>
                 @if (Auth::user()->hasRole('admin'))
                     <form
                         action="{{ route('admin.pets.store') }}"

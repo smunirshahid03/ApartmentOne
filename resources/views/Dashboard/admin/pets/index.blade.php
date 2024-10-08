@@ -11,15 +11,6 @@
         fill: #414141 !important;
     }
 
-    .profile-basic-info-form {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 30px;
-        border-bottom: 1px solid #00000036;
-        padding-bottom: 20px;
-        align-items: center;
-    }
-
     table.table.table-striped {
         width: 100%;
     }

@@ -2722,6 +2722,39 @@ table {
     overflow-y: auto  !important;
 }
 
+input[type="file"] {
+    padding: 5px !important;
+}
+
+.input-box.progress-bar {
+    background-color: #ff000000;
+}
+
+.profile-page.rooms-features-page .profile-basic-info-form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #00000036;
+    padding-bottom: 20px;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.profile-basic-info-form h3 {
+    margin: 0;
+}
+
+.profile-basic-info-form a {
+    margin: 0 !important;
+}
+
+.profile-page .profile-basic-info-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
 
 @media (min-width: 1400px) {
 .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
@@ -2932,6 +2965,51 @@ padding: 100px 0;
 .properties-page .two-things-align ul.nav.nav-tabs a.nav-link {
     font-size: 13px;
 }
+
+.credit-report-box .two-things-align {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+.profile-page .profile-basic-info-form form .two-btn-align-sub-del button.form-btn {
+    padding: 10px 20px;
+    font-size: 15px;
+}
+input[type="file"] {
+    padding: 5px !important;
+}
+
+.detailed-user-box {
+    padding: 20px;
+}
+.detailed-user-box .user-img-box img {
+    width: 150px;
+    height: 150px;
+}
+
+.detailed-user-box .user-img-box h5 {
+    font-size: 18px;
+}
+.profile-page .profile-basic-info-form h3 {
+    font-size: 25px;
+}
+.profile-page .profile-basic-info-form form .two-inputs-boxes-align .input-box label {
+    font-size: 13px;
+}
+input,select,textarea
+{
+    font-size: 13px;
+}
+.detailed-user-box .user-more-details ul {
+    gap: 10px;
+}
+
+.detailed-user-box .user-more-details ul li {
+    font-size: 14px;
+}
+
+
+
+
 
 
 
@@ -3147,6 +3225,62 @@ font-size: 14px;
     font-size: 13px;
 }
 
+.properties-page.admin-properties .latest-listing-parent-box {
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .box.two-person-align-box .sunb-person-child-box .content p {
+    font-size: 12px;
+    max-width: 100%;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .latest-child-box .box.property-detail-box .content p {
+    font-size: 12px;
+    max-width: 100%;
+    margin-right: 10px;
+}
+
+.profile-page .profile-basic-info-form form .two-inputs-boxes-align {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
+
+.profile-page .profile-basic-info-form form .two-inputs-boxes-align .input-box input {
+    height: 40px;
+    padding: 10px;
+    font-size: 13px;
+}
+
+.detailed-user-box .user-img-box img {
+    width: 130px;
+    height: 130px;
+}
+
+.profile-page .profile-basic-info-form form .two-inputs-boxes-align .input-box {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 2px;
+}
+.profile-page .profile-basic-info-form form .two-btn-align-sub-del button.form-btn {
+    padding: 8px 15px;
+    font-size: 13px;
+}
+
+.profile-page .profile-basic-info-form form .two-btn-align-sub-del {
+    display: flex;
+    column-gap: 15px;
+}
+
+
+
 
 
 
@@ -3307,12 +3441,28 @@ display: block !important;
 .main-dashboard-header .page-detail-box p {
     font-size: 14px;
 }
+
+/* dashbord-re-css-end */
+
+.properties-page .two-things-align ul.nav.nav-tabs a.nav-link {
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .two-btns-inline button {
+    padding: 5px 20px;
+    font-size: 12px;
 }
 
 
 
 
-/* dashbord-re-css-end */
+}
+
+
+
+
+
 
 @media (max-width: 991px){
 
@@ -3644,6 +3794,39 @@ padding: 15px 0;
     display: none;
 }
 
+.two-things-align h6 {
+    margin: 0;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .latest-child-box .box.property-detail-box .content h5 {
+    font-size: 18px;
+}
+
+
+.detailed-user-box {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-page .profile-basic-info-form h3 {
+    font-size: 20px;
+    text-align: center;
+}
+
+.profile-page .profile-basic-info-form form .two-btn-align-sub-del {
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -3903,6 +4086,30 @@ a.t-btn.t-btn-blue {
     width: 30px;
     height: 30px;
 }
+
+.properties-page .two-things-align ul.nav.nav-tabs {
+    column-gap: 5px;
+}
+
+.properties-page .two-things-align ul.nav.nav-tabs a.nav-link {
+    font-size: 10px;
+    padding: 5px 8px;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .latest-child-box .box.property-detail-box .content p {
+    font-size: 11px;
+    max-width: 100%;
+    margin-right: 0px;
+}
+.properties-page.admin-properties .latest-listing-parent-box .box.two-person-align-box .sunb-person-child-box .content p {
+    font-size: 10px;
+    max-width: 100%;
+}
+.properties-page.admin-properties .latest-listing-parent-box .box.two-person-align-box .sunb-person-child-box .content h5 {
+    font-size: 15px;
+}
+
+
 
 
 
@@ -4262,11 +4469,88 @@ width: 100%;
     text-indent: 0; /* Ensures "Admin" text is visible */
   }
 
+  .properties-page .two-things-align ul.nav.nav-tabs {
+    column-gap: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.properties-page.admin-properties .latest-listing-parent-box .box.two-person-align-box {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.properties-page.admin-properties .latest-listing-parent-box .latest-child-box .box.property-detail-box .content h5 {
+    font-size: 15px;
+}
+.properties-page.admin-properties .latest-listing-parent-box .box.two-person-align-box .sunb-person-child-box .content h5 {
+    font-size: 14px;
+}
+.properties-page.admin-properties .latest-listing-parent-box {
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.detailed-user-box .user-img-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: 1px solid #0000002b;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.detailed-user-box .user-img-box img {
+    width: 100px;
+    height: 100px;
+}
+.detailed-user-box .user-img-box h5 {
+    font-size: 16px;
+}
+.detailed-user-box {
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.detailed-user-box .user-more-details ul li {
+    font-size: 13px;
+}
+.profile-page .profile-basic-info-form form .two-inputs-boxes-align .input-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 2px;
+}
+
+.profile-page .profile-basic-info-form form .two-inputs-boxes-align {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.profile-page .profile-basic-info-form form .two-btn-align-sub-del {
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
 
 
 }
 
-.input-box.progress-bar {
-    background-color: #ff000000;
-}
+
 

@@ -2,12 +2,12 @@
 
 
 <style>
-    .dashboard-main .left-panel .left-panel-menu ul li a.room_features{
+    .dashboard-main .left-panel .left-panel-menu ul li a.profile-active{
     background-color: white;
     color: #414141;
 }
 
-.dashboard-main .left-panel .left-panel-menu ul li a.room_features svg path  {
+.dashboard-main .left-panel .left-panel-menu ul li a.profile-active svg path  {
     fill: #414141 !important;
 }
 </style>
