@@ -27,6 +27,10 @@
                                     <label for="">Name</label>
                                     <input type="text" placeholder="Type Here" name="name">
                                 </div>
+                                <div class="input-box">
+                                    <label for="address">Address</label>
+                                    <input type="text" placeholder="address" name="address" required>
+                                </div>
                                 <div class="input-box simple-select">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <label for="category">Category</label>
@@ -75,10 +79,16 @@
                                     @foreach ($features as $feature)
                                         <div class="paren-check-box">
                                             <input type="checkbox" id="feature-{{ $feature->id }}" name="features[]"
-                                                value="{{ $feature->id }}">
+                                                value="{{ $feature->id }}"
+                                                onchange="toggleQuantityInput(this, '{{ $feature->id }}')">
                                             <label for="feature-{{ $feature->id }}">{{ $feature->name }}</label>
+
                                         </div>
+                                        <div class="row"><input type="number" id="quantity-{{ $feature->id }}"
+                                                name="quantities[{{ $feature->id }}]" style="display: none;"
+                                                placeholder="Quantity" min="1"></div>
                                     @endforeach
+
                                 </div>
 
                                 <!-- Allowed Pets Section -->
@@ -456,7 +466,7 @@
 
                                     toastr.error(
                                         'Error occurred while creating property. Please check the fields.'
-                                        );
+                                    );
                                 } else {
                                     // Handle general errors
                                     alert('Error occurred while creating property.');
@@ -465,6 +475,16 @@
                         });
                     });
                 });
+
+                function toggleQuantityInput(checkbox, featureId) {
+                    const quantityInput = document.getElementById(`quantity-${featureId}`);
+                    if (checkbox.checked) {
+                        quantityInput.style.display = 'inline'; // Show the input field
+                    } else {
+                        quantityInput.style.display = 'none'; // Hide the input field
+                        quantityInput.value = ''; // Reset the input value
+                    }
+                }
             </script>
 
 

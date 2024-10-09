@@ -1539,10 +1539,15 @@ margin: 0;
     align-items: center;
     gap: 10px;
     border-right: 1px solid #0000002b;
-    padding-right: 30px;
+    padding-right: 15px;
     line-height: 0em;
 }
 
+.propertieslistings-page.propertiesdetails-page .name h6 {
+    text-transform: capitalize;
+    font-size: 25px;
+    font-weight: 600;
+    }
 .propertieslistings-page .properties_details_main .properties-icons-details ul li:last-child {
     border: none;
 }
@@ -2754,7 +2759,18 @@ input[type="file"] {
     align-items: flex-start;
     gap: 15px;
 }
+.propertieslistings-page .properties_details_main .properties_name_add .add {
+    display: flex;
+    gap: 10px;
+}
 
+.propertieslistings-page .properties_details_main .properties_name_add .add a.Delet-btn {
+    background-color: red;
+}
+
+.propertieslistings-page .properties_details_main .properties_name_add .add a.Delet-btn:hover {
+    background-color: black;
+}
 
 @media (min-width: 1400px) {
 .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {

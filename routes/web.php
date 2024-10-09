@@ -74,6 +74,9 @@ Route::prefix('landlord')->name('landlord.')->group(function () {
     Route::get('create/property',[PropertyController::class,'add_property'])->name('add_property');
     Route::post('store/property',[PropertyController::class,'store'])->name('store_property');
     Route::get('/propertiesdetails/{id}', [PropertyController::class, 'propertiesdetails'])->name('propertiesdetails');
+    Route::get('edit/property/{id}', [PropertyController::class, 'properties_edit'])->name('properties.edit');
+    Route::put('update/property/{id}', [PropertyController::class, 'properties_update'])->name('properties.update');
+    Route::post('delete/property/{id}', [PropertyController::class, 'properties_delete'])->name('properties.delete');
     Route::post('store/category',[PropertyController::class,'category_store'])->name('category.store');
 
     // profile

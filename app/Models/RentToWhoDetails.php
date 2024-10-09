@@ -15,6 +15,7 @@ class RentToWhoDetails extends Model
         'property_id',
     ];
 
+
     public function rentToWho()
     {
         return $this->belongsTo(RentToWho::class);

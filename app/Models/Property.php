@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Property extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes ;
     protected $fillable = [
         'user_id',
         'name',
@@ -17,6 +18,7 @@ class Property extends Model
         'other_details',
         'available_status',
         'price_rent',
+        'address'
     ];
     public function category()
     {
@@ -31,10 +33,15 @@ class Property extends Model
     }
 
     public function pets(){
-        return $this->hasMany(PetDetails::class, 'id');
+        return $this->hasMany(PetDetails::class, 'property_id');
     }
+
     public function features()
-    {
-        return $this->hasMany(FeatureDetails::class);
+{
+    return $this->hasMany(FeatureDetails::class, 'property_id');
+}
+
+    public function RentToWhoDetails(){
+        return $this->hasMany(RentToWhoDetails::class, 'property_id');
     }
 }
