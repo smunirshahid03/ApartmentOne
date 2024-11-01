@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Auth\AuhController;
 use App\Http\Controllers\Admin\PetController;
 use App\Http\Controllers\DashboardController;
@@ -129,6 +130,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('{id}/edit', [RentToWhoController::class, 'edit'])->name('edit');
         Route::post('{id}', [RentToWhoController::class, 'update'])->name('update');
         Route::delete('{id}', [RentToWhoController::class, 'destroy'])->name('destroy');
+    });
+
+
+      // Blogs
+      Route::prefix('blog')->name('blog.')->group(function () {
+      Route::get('index', [BlogController::class, 'index'])->name('index');
+      Route::get('/create', [BlogController::class, 'create'])->name('create');
+      Route::post('/store', [BlogController::class, 'store'])->name('store');
+      Route::get('/edit/{id}', [BlogController::class, 'edit'])->name('edit');
+      Route::post('/update/{id}', [BlogController::class, 'update'])->name('update');
+      Route::delete('/delete/{id}', [BlogController::class, 'destroy'])->name('destroy');
+      Route::get('/show/{id}', [BlogController::class, 'show'])->name('show');
+      Route::get('/show-all', [BlogController::class, 'showAll'])->name('show.all');
     });
 });
 });

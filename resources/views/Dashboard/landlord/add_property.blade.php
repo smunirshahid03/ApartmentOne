@@ -32,13 +32,15 @@
                                     <input type="text" placeholder="address" name="address" required>
                                 </div>
                                 <div class="input-box simple-select">
+                                    @if (Auth::user()->hasRole('admin'))
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <label for="category">Category</label>
                                         <!-- Button to trigger the modal -->
                                         <button type="button" id="create-category"
-                                            class="fa fa-plus btn btn-primary btn-sm px-3 py-2" style="white-space: nowrap"
-                                            data-bs-toggle="modal" data-bs-target="#categoryModal">Add Category</button>
+                                        class="fa fa-plus btn btn-primary btn-sm px-3 py-2" style="white-space: nowrap"
+                                        data-bs-toggle="modal" data-bs-target="#categoryModal">Add Category</button>
                                     </div>
+                                    @endif
                                     <select name="category" id="category" placeholder="Type Here">
                                         <!-- Categories will be appended here -->
                                         <option disabled>Select Category</option>

@@ -23,6 +23,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Toastr CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
 </head>
 
 <body>
@@ -152,17 +153,6 @@
                                                         fill="white" />
                                                 </svg>
                                                 Properties</a></li>
-                                        {{-- <li><a href="{{ route('landlord.applyhistory') }}" class="applyhistory-active"><svg
-                                                width="31" height="30" viewBox="0 0 31 30" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M25.3787 10.7325C25.3195 10.5968 25.2365 10.4728 25.1338 10.3663L17.6337 2.86625C17.5272 2.76348 17.4032 2.68051 17.2675 2.62125C17.23 2.60375 17.19 2.59375 17.15 2.58C17.0454 2.54441 16.9365 2.52297 16.8262 2.51625C16.8 2.51375 16.7762 2.5 16.75 2.5H8C6.62125 2.5 5.5 3.62125 5.5 5V25C5.5 26.3788 6.62125 27.5 8 27.5H23C24.3788 27.5 25.5 26.3788 25.5 25V11.25C25.5 11.2238 25.4862 11.2 25.4837 11.1725C25.4776 11.0621 25.4562 10.9532 25.42 10.8487C25.4075 10.8087 25.3962 10.77 25.3787 10.7325ZM21.2325 10H18V6.7675L21.2325 10ZM8 25V5H15.5V11.25C15.5 11.5815 15.6317 11.8995 15.8661 12.1339C16.1005 12.3683 16.4185 12.5 16.75 12.5H23L23.0025 25H8Z"
-                                                    fill="white" />
-                                                <path
-                                                    d="M10.5 15H20.5V17.5H10.5V15ZM10.5 20H20.5V22.5H10.5V20ZM10.5 10H13V12.5H10.5V10Z"
-                                                    fill="white" />
-                                            </svg>
-                                            Apply History</a></li> --}}
                                         <li><a href="{{ route('admin.profile') }}" class="profile-active"><svg
                                                     width="31" height="30" viewBox="0 0 31 30" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -204,6 +194,18 @@
                                                 </svg>
 
                                                 Pets</a></li>
+                                                <li><a href="{{ route('admin.blog.index') }}" class="blog">
+                                                    <svg width="31" height="31" viewBox="0 0 31 31"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M27.1746 7.62036H24.6746L23.0871 6.03286C22.513 5.45814 21.7369 5.13067 20.9246 5.12036H17.7996C17.6245 4.41886 17.2239 3.79427 16.6593 3.3426C16.0947 2.89093 15.3974 2.63718 14.6746 2.62036V10.5704C14.7389 11.8328 15.2379 13.0341 16.0871 13.9704C17.4853 15.3145 19.3141 16.1204 21.2496 16.2454L25.5621 14.5204C26.0681 14.3172 26.5237 14.0062 26.8972 13.609C27.2707 13.2118 27.553 12.7379 27.7246 12.2204L28.4246 10.3079C28.4436 10.1794 28.4436 10.0488 28.4246 9.92036V8.87036C28.4246 8.53884 28.2929 8.2209 28.0585 7.98648C27.8241 7.75206 27.5061 7.62036 27.1746 7.62036ZM20.9246 10.1204C20.6774 10.1204 20.4357 10.0471 20.2302 9.9097C20.0246 9.77235 19.8644 9.57712 19.7698 9.34872C19.6752 9.12031 19.6504 8.86897 19.6986 8.6265C19.7469 8.38402 19.8659 8.16129 20.0407 7.98648C20.2156 7.81166 20.4383 7.69261 20.6808 7.64438C20.9232 7.59615 21.1746 7.6209 21.403 7.71551C21.6314 7.81012 21.8266 7.97034 21.964 8.1759C22.1013 8.38146 22.1746 8.62313 22.1746 8.87036C22.1746 9.20188 22.0429 9.51982 21.8085 9.75424C21.5741 9.98867 21.2561 10.1204 20.9246 10.1204Z"
+                                                            fill="white" />
+                                                        <path
+                                                            d="M15.1496 14.7954C14.2777 13.8404 13.7079 12.6486 13.5121 11.3704H8.42462C8.0906 11.3925 7.75571 11.3429 7.44238 11.2251C7.12905 11.1073 6.8445 10.9239 6.6078 10.6872C6.37109 10.4505 6.18769 10.1659 6.06986 9.8526C5.95204 9.53927 5.90252 9.20438 5.92462 8.87036C5.92462 8.53884 5.79293 8.2209 5.55851 7.98648C5.32408 7.75206 5.00614 7.62036 4.67462 7.62036C4.3431 7.62036 4.02516 7.75206 3.79074 7.98648C3.55632 8.2209 3.42462 8.53884 3.42462 8.87036C3.43718 9.73782 3.64211 10.5917 4.02462 11.3704C4.44631 12.188 5.10976 12.8558 5.92462 13.2829V27.6204H9.67462V21.3704H17.1746V27.6204H20.9246V17.4579C18.7441 17.2861 16.6963 16.342 15.1496 14.7954Z"
+                                                            fill="white" />
+                                                    </svg>
+
+                                             Blogs</a></li>
                                     </ul>
                                 @endif
                             </div>
@@ -366,6 +368,7 @@
                                                 </svg>
 
                                                 Pets</a></li>
+
                                     <li> <a href="#"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                             class="t-btn t-btn-blue t-btn-svg"><svg width="24" height="24"
@@ -477,9 +480,11 @@
 
     </section>
 
+    @yield('scripts')
+
     <script src="{{ asset('assets/custom-js/custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <!-- Load Select2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -490,7 +495,7 @@
     <!-- Toastr JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/toastr.js/latest/toastr.min.js"></script>
-
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 </body>
 
 </html>

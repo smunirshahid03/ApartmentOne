@@ -10,7 +10,7 @@
                 <div class="reports-fours-box-align">
                     <div class="parent-box">
                         <div class="content">
-                            <h5>50</h5>
+                            <h5>{{ $properties->count() }}</h5>
                             <p>Total Properties</p>
                         </div>
                         <div class="img-box">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\Bank;
+use App\Models\Property;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,8 +17,11 @@ class LandlordAuthController extends Controller
 
     public function dashboard()
     {
-        return view('Dashboard.landlord.dashboard');
+        $userId = Auth::id();
+        $properties = Property::where('user_id', $userId)->get(['id','name','cat_id']);
+        return view('Dashboard.landlord.dashboard', compact('properties'));
     }
+
     public function updateProfile(Request $request)
 {
     $user = auth()->user();
