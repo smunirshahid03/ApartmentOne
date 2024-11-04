@@ -33,23 +33,23 @@
             </div>
             <div class="four-reports-align">
                 <div class="number-box">
-                    <h6>{{($user->count()) }}</h6>
+                    <h6>{{($user->count()) ?? ''}}</h6>
                     <p>Users</p>
                 </div>
                 <div class="number-box">
-                    <h6>{{ $landlordsCount }}</h6>
+                    <h6>{{ $landlordsCount ?? ''}}</h6>
                     <p>Land Lords Accounts</p>
                 </div>
                 <div class="number-box">
-                    <h6>{{ $tenantsCount }}</h6>
+                    <h6>{{ $tenantsCount ?? ''}}</h6>
                     <p>Tenants Accounts</p>
                 </div>
                 <div class="number-box">
-                    <h6>{{ $listedPropertiesCount }}</h6>
+                    <h6>{{ $listedPropertiesCount ?? '' }}</h6>
                     <p>Properties Listed</p>
                 </div>
                 <div class="number-box">
-                    <h6>{{ $soldPropertiesCount }}</h6>
+                    <h6>{{ $soldPropertiesCount ?? ''}}</h6>
                     <p>Properties Sold</p>
                 </div>
 
