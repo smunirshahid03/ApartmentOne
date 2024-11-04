@@ -33,25 +33,26 @@
             </div>
             <div class="four-reports-align">
                 <div class="number-box">
-                    <h6>50k</h6>
-                    <p>New Users</p>
+                    <h6>{{($user->count()) }}</h6>
+                    <p>Users</p>
                 </div>
                 <div class="number-box">
-                    <h6>1k</h6>
-                    <p>Land Lords New Accounts</p>
+                    <h6>{{ $landlordsCount }}</h6>
+                    <p>Land Lords Accounts</p>
                 </div>
                 <div class="number-box">
-                    <h6>10k</h6>
-                    <p>New Tenants Accounts</p>
+                    <h6>{{ $tenantsCount }}</h6>
+                    <p>Tenants Accounts</p>
                 </div>
                 <div class="number-box">
-                    <h6>5000+</h6>
+                    <h6>{{ $listedPropertiesCount }}</h6>
                     <p>Properties Listed</p>
                 </div>
                 <div class="number-box">
-                    <h6>4500+</h6>
+                    <h6>{{ $soldPropertiesCount }}</h6>
                     <p>Properties Sold</p>
                 </div>
+
             </div>
         </div>
 
