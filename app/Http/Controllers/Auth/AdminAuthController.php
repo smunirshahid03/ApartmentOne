@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use App\Models\Feature;
 use App\Models\Property;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -22,8 +22,10 @@ class AdminAuthController extends Controller
 
         $landlordsCount = User::role('land_lord')->count();
         $tenantsCount = User::role('tenant')->count();
+
         return view('Dashboard.admin.dashboard', compact('user', 'listedPropertiesCount', 'soldPropertiesCount', 'landlordsCount', 'tenantsCount'));
     }
+
 
 
     public function notifications()

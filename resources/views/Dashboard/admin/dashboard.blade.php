@@ -45,7 +45,7 @@
                     <p>Tenants Accounts</p>
                 </div>
                 <div class="number-box">
-                    <h6>{{ $listedPropertiesCount ?? '' }}</h6>
+                    <h6>{{ $listedPropertiesCount ?? ''}}</h6>
                     <p>Properties Listed</p>
                 </div>
                 <div class="number-box">
