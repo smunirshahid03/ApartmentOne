@@ -20,7 +20,9 @@ class PropertyController extends Controller
     public function properties()
     {
         // Load the user with properties relationship
-        $properties = Property::with('user','media')->get();
+        $userId = Auth::id();
+
+        $properties = Property::where('user_id',$userId)->with('user','media')->get();
         return view('Dashboard.landlord.properties',compact('properties'));
     }
 
