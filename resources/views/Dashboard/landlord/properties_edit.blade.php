@@ -93,25 +93,22 @@
 
                         <div class="input-box progress-bar">
                             <div class="progress-container">
-                                <input type="range" id="progressInput" min="10" max="2500" value=""
-                                    step="10">
+                                <input type="range" id="progressInput" min="10" max="2500" value="{{ $property->credit_point? $property->credit_point <= 10 :  10 }}" step="10">
                             </div>
                             <div class="numbers-main-bb">
-                                <input type="number" id="numberInput1" class="number-input" value="10" min="10"
+                                <input type="number" id="numberInput1" class="number-input" value="{{  $property->credit_point? $property->credit_point <= 10 :  10  }}" min="10"
                                     max="500" step="10">
-                                <input type="number" id="numberInput2" class="number-input" value="500" min="500"
+                                <input type="number" id="numberInput2" class="number-input" value="{{  $property->credit_point? $property->credit_point <= 500 :  500  }}" min="500"
                                     max="1000" step="10">
-                                <input type="number" id="numberInput3" class="number-input" value="1000" min="1000"
+                                <input type="number" id="numberInput3" class="number-input" value="{{ $property->credit_point ?? 1000 }}" min="1000"
                                     max="1500" step="10">
-                                <input type="number" id="numberInput4" class="number-input" value="1500" min="1500"
+                                <input type="number" id="numberInput4" class="number-input" value="{{ $property->credit_point ?? 1500 }}" min="1500"
                                     max="2000" step="10">
-                                <input type="number" id="numberInput5" class="number-input" value="2000" min="2000"
+                                <input type="number" id="numberInput5" class="number-input" value="{{ $property->credit_point ?? 2000 }}" min="2000"
                                     max="2500" step="10">
                             </div>
-                            <div class="progress-number" id="progressNumber"></div>
-                            <!-- Hidden input to hold the credit_point value -->
-                            <input type="hidden" name="credit_point" id="credit_point"
-                                value="{{ old('credit_point', $property->credit_point ?? 0) }}">
+                            <div class="progress-number" id="progressNumber">{{ $property->credit_point ?? 0 }}</div>
+                            <input type="hidden" id="progress_points" name="progress_points">
                         </div>
 
                         <!-- Rooms & Features Section -->
@@ -365,6 +362,7 @@
     <script>
         const progressInput = document.getElementById('progressInput');
         const progressNumber = document.getElementById('progressNumber');
+        const progress_points = document.getElementById('progress_points');
 
         // Individual input boxes
         const numberInput1 = document.getElementById('numberInput1');
@@ -425,6 +423,7 @@
         // Function to update the progress and which number input is active
         function updateProgress(value) {
             progressNumber.innerText = value;
+            progress_points.value = value;
 
             // Update number inputs based on the current progress value
             if (value >= 10 && value < 500) {

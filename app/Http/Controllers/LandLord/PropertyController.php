@@ -230,6 +230,7 @@ class PropertyController extends Controller
     }
 
         public function properties_edit($id) {
+
             // Retrieve the property with the given ID, including features and related data
             $property = Property::with(['category', 'media', 'pets', 'features', 'RentToWhoDetails.rentToWho'])->findOrFail($id);
 
@@ -247,10 +248,9 @@ class PropertyController extends Controller
 
 
         public function properties_update(Request $request, $id)
-    {
-        $property = Property::findOrFail($id); // Find the property by ID or throw 404
+{
+        $property = Property::findOrFail($id);
 
-        // Validate the request data
         $validated = $request->validate([
             'images' => 'sometimes|array|max:50', // 'sometimes' means it's optional, unlike 'required'
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4048',
@@ -259,7 +259,7 @@ class PropertyController extends Controller
             'name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'category' => 'required|integer',
-            'credit_point' => 'required|integer|min:10|max:2500',
+            'progress_points' =>'required',
             'features' => 'required|array',
             'quantities' => 'required|array',
             'pets' => 'required|array',
@@ -269,18 +269,16 @@ class PropertyController extends Controller
             'price' => 'required|numeric',
         ]);
 
-        // Update the property
         $property->update([
             'name' => $validated['name'],
             'address' => $validated['address'],
             'cat_id' => $validated['category'],
-            'credit_point' => $validated['credit_point'],
+            'credit_point' => $request['progress_points'],
             'other_details' => $validated['other_details'],
             'available_status' => $validated['availability'],
             'price_rent' => $validated['price'],
         ]);
 
-        // Handle image deletions (soft delete)
         if ($request->has('deleted_images')) {
             foreach ($request->deleted_images as $imgPath) {
                 // Soft delete the image or remove the media record
@@ -293,7 +291,6 @@ class PropertyController extends Controller
             }
         }
 
-        // Handle image upload (add new images)
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $imagePath = $image->store('image/property', 'public');
@@ -304,54 +301,41 @@ class PropertyController extends Controller
             }
         }
 
-        // Handle the rent_to_who relationship
         if ($request->has('rent_whos') && is_array($request->rent_whos)) {
+            RentToWhoDetails::where('property_id', $property->id)->delete();
             foreach ($request->rent_whos as $rentWhoId) {
-                $rent_to_who_details = RentToWhoDetails::where('rent_to_who_id', $rentWhoId)
-                    ->first();
-                if ($rent_to_who_details) {
-                    // If it exists, update it
-                    $rent_to_who_details->update([
-                        'rent_to_who_id' => $rentWhoId,
-                        'property_id' => $id,
-                    ]);
-                }
+                RentToWhoDetails::create([
+                    'property_id' => $property->id,
+                    'rent_to_who_id' => $rentWhoId,
+                ]);
             }
         }
-
-
-        // Handle the pets relationship
 
         if ($request->has('pets') && is_array($request->pets)) {
+            PetDetails::where('property_id', $property->id)->delete();
             foreach ($request->pets as $petId) {
-                $pet_details =  PetDetails::where('pet_id', $petId)->first();
-                if ($pet_details) {
-                    $pet_details->update([
-                        'property_id' => $property->id,
-                        'pet_id' => $petId,
-                    ]);
-                }
-            }
-        }
-        // Handle the features relationship
-        FeatureDetails::where('property_id', $property->id)->delete(); // Remove old relations
-        if ($request->has('features') && is_array($request->features)) {
-            foreach ($request->features as $featureId) {
-                $feature_details =  FeatureDetails::where('feature_id', $featureId)->first();
-                    $quantity = $request->quantities[$featureId] ?? 1;
-                if ($feature_details) {
-                    $feature_details->update([
-                        'property_id' => $property->id,
-                        'feature_id' => $featureId,
-                        'quantity' => $quantity,
-                    ]);
-                }
+                PetDetails::create([
+                    'property_id' => $property->id,
+                    'pet_id' => $petId,
+                ]);
             }
         }
 
-        // Return a success response
+        if ($request->has('features') && is_array($request->features)) {
+            // FeatureDetails::where('property_id', $property->id)->delete();
+            foreach ($request->features as $featureId) {
+                if (isset($request->quantities[$featureId]) && $request->quantities[$featureId] !== null) {
+                    FeatureDetails::create([
+                        'property_id' => $property->id,
+                        'feature_id' => $featureId,
+                        'quantity' => $request->quantities[$featureId],
+                    ]);
+                }
+        }
+        }
+
         return response()->json(['message' => 'Property updated successfully!'], 200);
-    }
+        }
     public function properties_delete($id)
     {
         $property = Property::findOrFail($id);
