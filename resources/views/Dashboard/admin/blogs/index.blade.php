@@ -31,57 +31,49 @@
     <a href="{{ route('admin.blog.create') }}" type="submit" class="btn btn-primary">Add Blog</a>
 </div>
 <div>
-    <table id="table_id" class="display">
+    <table id="table_id" class="table">
         <thead>
-            <tr>
-                <th>ID</th>
+            <tr class="thead-dark">
+                <th>Image</th>
                 <th>Title</th>
                 <th>Slug</th>
-                <th>Short Description</th>
-                <th>Long Description</th>
                 <th>Page Title</th>
                 <th>Meta Tag</th>
-                <th>Image</th>
                 <th>Is Popular</th>
                 <th>Is Trending</th>
                 <th>Is Latest</th>
                 <th>Created At</th>
-                <th>Updated At</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Static Sample Data -->
-            <tr>
-                <td>1</td>
-                <td>Sample Title 1</td>
-                <td>sample-slug-1</td>
-                <td>This is a short description.</td>
-                <td>This is a long description for the sample data entry.</td>
-                <td>Sample Page Title</td>
-                <td>Sample Meta Tag</td>
-                <td><img src="path/to/sample-image1.jpg" width="50"></td>
-                <td>Yes</td>
-                <td>No</td>
-                <td>No</td>
-                <td>2024-01-01 10:00:00</td>
-                <td>2024-01-01 12:00:00</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Sample Title 2</td>
-                <td>sample-slug-2</td>
-                <td>This is another short description.</td>
-                <td>This is another long description for the sample data entry.</td>
-                <td>Another Page Title</td>
-                <td>Another Meta Tag</td>
-                <td><img src="path/to/sample-image2.jpg" width="50"></td>
-                <td>No</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>2024-01-02 11:00:00</td>
-                <td>2024-01-02 13:00:00</td>
-            </tr>
-            <!-- Add more rows as needed -->
+            {{-- {{ dd($blogs)  }} --}}
+          @foreach ($blogs as $blog )
+          <tr>
+           <td> <img src="{{Storage::url('blog/' . $blog->image)}}" alt="" height="150px" width="150px"> </td>
+              <td>{{ $blog->title }}</td>
+              <td>{{ $blog->slug }}</td>
+              <td>{{ $blog->page_title }}</td>
+              <td>{{ $blog->meta_tag }}</td>
+              <td>{{ $blog->is_popular == 1 ? 'Popular' : 'No' }}</td>
+              <td>{{ $blog->is_trending   == 1 ? 'Trending' : 'No'}}</td>
+              <td>{{ $blog->is_latest   == 1 ? 'Latest' : 'No'}}</td>
+              <td>{{ $blog->created_at }}</td>
+              <td>
+                <!-- Edit Button -->
+                <a href="{{ route('admin.blog.edit', $blog->id) }}" class="btn btn-primary btn-sm">Edit</a>
+
+                <!-- Delete Button -->
+                <form action="{{ route('admin.blog.destroy', $blog->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this blog?')">Delete</button>
+                </form>
+            </td>
+        </tr>
+
+        </tr>
+        @endforeach
         </tbody>
     </table>
 
@@ -90,6 +82,8 @@
 </div>
 @endsection
 @section('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 <script>
     $(document).ready(function() {
         $('#table_id').DataTable();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
@@ -11,67 +12,70 @@ class WebController extends Controller
         return view('Website.index');
     }
 
-    public function about()    
+    public function about()
     {
         return view('Website.about');
     }
 
-    public function help()    
+    public function help()
     {
         return view('Website.help');
     }
 
-    
-    public function blog()    
+
+    public function blog()
     {
-        return view('Website.blog');
+        $blogs = Blog::paginate(10);
+        return view('Website.blog')->with(compact('blogs'));
     }
 
-    public function blogdescription()    
-    {
-        return view('Website.blogdescription');
-    }
-
-    public function faqs()    
+    public function faqs()
     {
         return view('Website.faqs');
     }
 
-    public function contact()    
+    public function contact()
     {
         return view('Website.contact');
     }
 
-    public function services()    
+    public function services()
     {
         return view('Website.services');
     }
 
-    public function seekingahome()    
+    public function seekingahome()
     {
         return view('Website.seekingahome');
     }
 
-    public function rentahome()    
+    public function rentahome()
     {
         return view('Website.rentahome');
     }
 
-    public function info()    
+    public function info()
     {
         return view('Website.info');
     }
 
-    public function login()    
+    public function login()
     {
         return view('Website.login');
     }
 
-    public function register()    
+    public function register()
     {
         return view('Website.register');
     }
-    
-    
-    
+
+
+    public function blogDetails($id)
+    {
+
+        $blog = Blog::where('id', $id)->first();
+        return view('Website.blogdescription')->with(compact('blog'));
+
+    }
+
 }

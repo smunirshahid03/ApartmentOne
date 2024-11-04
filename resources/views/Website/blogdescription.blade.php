@@ -7,7 +7,8 @@
             <div class="col-md-12">
                 <div class="text">
                     <h2>Blogs </h2>
-                    <h1>Real estate and property<br> management</h1>      
+                    <h1>{{ $blog->page_title }}</h1>
+                    {{-- <h1>Real estate and property<br> management</h1> --}}
                 </div>
             </div>
         </div>
@@ -20,40 +21,26 @@
 
             <div class="col-lg-6 col-md-12">
                 <div class="img-box">
-                    <img src="{{ asset('assets/images/blog-des-sec-01-img-01.png')}}" alt="">
+                    <img src="{{Storage::url('blog/' . $blog->image)}}" alt="">
                 </div>
 
             </div>
-
             <div class="col-lg-6 col-md-12">
                 <div class="text text-left-pading">
-                    <h2>Tailored Real Estate Solutions</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <h2>{{ $blog->page_title }}</h2>
+                    <p>{{ $blog->short_description }}</p>
                 </div>
+
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="text content-box">
-                    <h2>How to Avail Apartment One’s<br> Management Services </h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <h2>{{ $blog->title }} </h2>
+                    <p>{{ strip_tags($blog->long_description) }}</p>
+
                 </div>
-                <div class="text content-box">
-                    <h2>Lorem Is Simply  </h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-                <div class="large-img-box">
-                    <img src="{{ asset('assets/images/blog-des-sec-01-img-02.png')}}" alt="">
-                </div>
-                <div class="text content-box">
-                    <h2>Lorem Is Simply A Dummy Text </h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                </div>
-                <div class="text content-box">
-                    <h2>What Is The Main Criteria to<br> get paid for rentals    </h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                </div>
+
             </div>
         </div>
     </div>
@@ -68,12 +55,12 @@
                     <div class="text">
                         <h3>Related Blogs</h3>
                         <h2>More News Related To<br> This One</h2>
-                    </div> 
+                    </div>
 
                     <a href="{{ route('blog') }}" class="t-btn t-btn-blue">See All Blogs</a>
 
                 </div>
-            </div>  
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-6">
@@ -85,7 +72,21 @@
                     <div class="text">
                         <h5>Real estate and property management</h5>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
+                        {{-- <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a> --}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="blog-parent-box">
+                   <div class="img-box">
+                    <img src="{{ asset('assets/images/blog-parent-img.png')}}" alt="">
+                    <h6>Latest</h6>
+                   </div>
+                    <div class="text">
+                        <h5>Real estate and property management</h5>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
+                        {{-- <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a> --}}
                     </div>
                 </div>
             </div>
@@ -98,33 +99,7 @@
                     <div class="text">
                         <h5>Real estate and property management</h5>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="blog-parent-box">
-                   <div class="img-box">
-                    <img src="{{ asset('assets/images/blog-parent-img.png')}}" alt="">
-                    <h6>Latest</h6>
-                   </div>
-                    <div class="text">
-                        <h5>Real estate and property management</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="blog-parent-box">
-                   <div class="img-box">
-                    <img src="{{ asset('assets/images/blog-parent-img.png')}}" alt="">
-                    <h6>Latest</h6>
-                   </div>
-                    <div class="text">
-                        <h5>Real estate and property management</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
+                        {{-- <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a> --}}
                     </div>
                 </div>
             </div>

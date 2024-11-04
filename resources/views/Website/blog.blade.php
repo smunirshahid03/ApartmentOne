@@ -1,4 +1,21 @@
 @extends('Website.layouts.master')
+<style>
+    .main-blog-section-grid .blog-parent-box img {
+    width: 260px !important;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.main-blog-section-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 20px;
+    row-gap: 20px;
+    flex-wrap: wrap;
+}
+</style>
 @section('content')
 
 <section class="home-sec-01" style="background-image: url({{ asset('assets/images/blog-main-banner.png')}}">
@@ -7,7 +24,7 @@
             <div class="col-md-12">
                 <div class="text">
                     <h2>Blogs </h2>
-                    <h1>Latest News & Updates</h1>      
+                    <h1>Latest News & Updates</h1>
                 </div>
             </div>
         </div>
@@ -17,151 +34,38 @@
 <section class="blog-sec-01">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="blog-parent-box">
-                   <div class="img-box">
-                    <img src="{{ asset('assets/images/blog-parent-img.png')}}" alt="">
-                    <h6>Latest</h6>
+            <div class="col-lg-12">
+
+                    <div class="main-blog-section-grid">
+                        @foreach ($blogs as $blog)
+                    <div class="blog-parent-box">
+
+
+
+                        <div class="img-box">
+
+                    <img src="{{ Storage::url('blog/' . $blog->image) }}" alt="" >
+                        @if ($blog->is_popular == 1)
+                            <h6>Popular</h6>
+                            @elseif ($blog->is_trending == 1)
+                            <h6>Trending</h6>
+                            @elseif ($blog->is_latest == 1)
+                            <h6>Latest</h6>
+                        @endif
+
                    </div>
                     <div class="text">
-                        <h5>Real estate and property management</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
+                        <h5>{{ $blog->title }}</h5>
+                        <p title="{{ $blog->short_description }}">{{ \Illuminate\Support\Str::words($blog->short_description, 5, '...') }}</p>
+                        <a href="{{ route('blog-details',['id' => $blog->id]) }}" class="t-btn t-btn-blue">Read More</a>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="blog-parent-box">
-                   <div class="img-box">
-                    <img src="{{ asset('assets/images/blog-parent-img.png')}}" alt="">
-                    <h6>Latest</h6>
-                   </div>
-                    <div class="text">
-                        <h5>Real estate and property management</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
+                    @endforeach
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="blog-parent-box">
-                   <div class="img-box">
-                    <img src="{{ asset('assets/images/blog-parent-img.png')}}" alt="">
-                    <h6>Latest</h6>
-                   </div>
-                    <div class="text">
-                        <h5>Real estate and property management</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="blog-parent-box">
-                   <div class="img-box">
-                    <img src="{{ asset('assets/images/blog-parent-img.png')}}" alt="">
-                    <h6>Latest</h6>
-                   </div>
-                    <div class="text">
-                        <h5>Real estate and property management</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="blog-parent-box">
-                   <div class="img-box">
-                    <img src="{{ asset('assets/images/blog-parent-img.png')}}" alt="">
-                    <h6>Latest</h6>
-                   </div>
-                    <div class="text">
-                        <h5>Real estate and property management</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="blog-parent-box">
-                   <div class="img-box">
-                    <img src="{{ asset('assets/images/blog-parent-img.png')}}" alt="">
-                    <h6>Latest</h6>
-                   </div>
-                    <div class="text">
-                        <h5>Real estate and property management</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="blog-parent-box">
-                   <div class="img-box">
-                    <img src="{{ asset('assets/images/blog-parent-img.png')}}" alt="">
-                    <h6>Latest</h6>
-                   </div>
-                    <div class="text">
-                        <h5>Real estate and property management</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="blog-parent-box">
-                   <div class="img-box">
-                    <img src="{{ asset('assets/images/blog-parent-img.png')}}" alt="">
-                    <h6>Latest</h6>
-                   </div>
-                    <div class="text">
-                        <h5>Real estate and property management</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="blog-parent-box">
-                   <div class="img-box">
-                    <img src="{{ asset('assets/images/blog-parent-img.png')}}" alt="">
-                    <h6>Latest</h6>
-                   </div>
-                    <div class="text">
-                        <h5>Real estate and property management</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="blog-parent-box">
-                   <div class="img-box">
-                    <img src="{{ asset('assets/images/blog-parent-img.png')}}" alt="">
-                    <h6>Latest</h6>
-                   </div>
-                    <div class="text">
-                        <h5>Real estate and property management</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="blog-parent-box">
-                   <div class="img-box">
-                    <img src="{{ asset('assets/images/blog-parent-img.png')}}" alt="">
-                    <h6>Latest</h6>
-                   </div>
-                    <div class="text">
-                        <h5>Real estate and property management</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                        <a href="{{ route('blogdescription') }}" class="t-btn t-btn-blue">Read More</a>
-                    </div>
-                </div>
+
             </div>
         </div>
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-md-12">
                 <div class="pagination-box">
                     <ul>
@@ -175,7 +79,46 @@
                     </ul>
                 </div>
             </div>
+        </div> --}}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pagination-box">
+                    <ul>
+                        <!-- Previous Page Link -->
+                        @if ($blogs->onFirstPage())
+                            <li><a href="#" class="pagi-btn right-left-btn disabled" aria-disabled="true">&lt;</a></li>
+                        @else
+                            <li><a href="{{ $blogs->previousPageUrl() }}" class="pagi-btn right-left-btn">&lt;</a></li>
+                        @endif
+
+                        <!-- Pagination Elements -->
+                        @foreach ($blogs->links()->elements as $element)
+                            @if (is_string($element))
+                                <li><a href="#" class="pagi-btn normal-box-pagi disabled">{{ $element }}</a></li>
+                            @endif
+
+                            @if (is_array($element))
+                                @foreach ($element as $page => $url)
+                                    @if ($page == $blogs->currentPage())
+                                        <li><a href="#" class="pagi-btn normal-box-pagi active-pagi">{{ $page }}</a></li>
+                                    @else
+                                        <li><a href="{{ $url }}" class="pagi-btn normal-box-pagi">{{ $page }}</a></li>
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endforeach
+
+                        <!-- Next Page Link -->
+                        @if ($blogs->hasMorePages())
+                            <li><a href="{{ $blogs->nextPageUrl() }}" class="pagi-btn right-left-btn">&gt;</a></li>
+                        @else
+                            <li><a href="#" class="pagi-btn right-left-btn disabled" aria-disabled="true">&gt;</a></li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
         </div>
+
     </div>
 
 </section>

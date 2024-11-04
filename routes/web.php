@@ -32,8 +32,7 @@ use App\Http\Controllers\LandLord\PropertyController;
 Route::get('/',[WebController::class,'index'])->name('index');
 Route::get('/about',[WebController::class,'about'])->name('about');
 Route::get('/help',[WebController::class,'help'])->name('help');
-Route::get('/blog',[WebController::class,'blog'])->name('blog');
-Route::get('/blogdescription',[WebController::class,'blogdescription'])->name('blogdescription');
+Route::get('/blog',action: [WebController::class,'blog'])->name('blog');
 Route::get('/faqs',[WebController::class,'faqs'])->name('faqs');
 Route::get('/contact',[WebController::class,'contact'])->name('contact');
 Route::get('/services',[WebController::class,'services'])->name('services');
@@ -46,6 +45,11 @@ Route::get('/register',[WebController::class,'register'])->name('register');
 Route::post('/register/store',[AuhController::class,'register'])->name('register.store');
 Route::post('/login/store',[AuhController::class,'login'])->name('login.store');
 Route::post('/logout',[AuhController::class,'logout'])->name('logout');
+
+// blogs
+Route::get('blog', [WebController::class, 'blog'])->name('blog');
+Route::get('blog/details/{id}', [WebController::class, 'blogDetails'])->name('blog-details');
+
 
 // Dashboard Routes
 Route::prefix('tenant')->name('tenant.')->group(function () {
@@ -141,8 +145,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
       Route::get('/edit/{id}', [BlogController::class, 'edit'])->name('edit');
       Route::post('/update/{id}', [BlogController::class, 'update'])->name('update');
       Route::delete('/delete/{id}', [BlogController::class, 'destroy'])->name('destroy');
-      Route::get('/show/{id}', [BlogController::class, 'show'])->name('show');
-      Route::get('/show-all', [BlogController::class, 'showAll'])->name('show.all');
     });
 });
 });
