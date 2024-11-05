@@ -5,6 +5,7 @@ use App\Http\Controllers\WebController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Auth\AuhController;
 use App\Http\Controllers\Admin\PetController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\RentToWhoController;
@@ -126,6 +127,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('{pet}', [PetController::class, 'update'])->name('update');
         Route::delete('{pet}', [PetController::class, 'destroy'])->name('destroy');
     });
+    //user
+    Route::prefix('user')->name('user.')->group(function () {
+        Route::get('/index', [UserController::class, 'index'])->name('index');
+        Route::get('create', [UserController::class, 'create'])->name('create');
+        Route::post('/', [UserController::class, 'store'])->name('store');
+        Route::get('{user}/edit', [UserController::class, 'edit'])->name('edit');
+        Route::post('{user}', [UserController::class, 'update'])->name('update'); // Fixed to reference 'user'
+        Route::delete('{user}', [UserController::class, 'destroy'])->name('destroy'); // Fixed to reference 'user'
+    });
+
 // RentToWho
         Route::prefix('rent-to-who')->name('rent-to-who.')->group(function () {
         Route::get('/', [RentToWhoController::class, 'index'])->name('index');
