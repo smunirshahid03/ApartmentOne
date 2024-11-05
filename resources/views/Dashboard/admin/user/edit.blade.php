@@ -138,7 +138,7 @@
                                 <label for="profile_img">Profile Image</label>
                                 <input class="form-control" type="file" name="profile_img" accept="image/*">
                                 @if ($user->profile_img)
-                                    <img src="{{ asset($user->profile_img) }}" alt="Profile Image" width="100" class="mt-2">
+                                    <img src="{{ Storage::url($user->profile_img ?? '') }}" alt="Profile Image" width="100" class="mt-2">
                                 @endif
                             </div>
                         </div>

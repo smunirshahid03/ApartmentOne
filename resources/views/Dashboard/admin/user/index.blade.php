@@ -68,7 +68,7 @@
                             <td>
                                 @if($user->profile_img)
                                     {{-- <img src="{{ asset('storage/'.$user->profile_img) }}" alt="Profile Image" width="50" height="50"> --}}
-                                    <img src="{{ asset('storage/profiles/' . $user->profile_img) }}" alt="Profile Image" width="50" height="50">
+                                    <img src="{{ Storage::url($user->profile_img ?? '') }}" alt="Profile Image" width="50" height="50">
 
                                     {{-- <img src="{{ asset('storage/' . $user->profiles) }}" alt="Profile Image" width="50" height="50"> --}}
 
