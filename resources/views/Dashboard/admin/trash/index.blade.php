@@ -1,12 +1,12 @@
 @extends('Dashboard.Layouts.master_dashboard')
 
 <style>
-    .dashboard-main .left-panel .left-panel-menu ul li a.user {
+    .dashboard-main .left-panel .left-panel-menu ul li a.trash {
         background-color: white;
         color: #414141;
     }
 
-    .dashboard-main .left-panel .left-panel-menu ul li a.user svg path {
+    .dashboard-main .left-panel .left-panel-menu ul li a.trash svg path {
         fill: #414141 !important;
     }
 
@@ -34,8 +34,6 @@
                 @endif
                 <div class="profile-basic-info-form">
                     <h3>Users</h3>
-                    <a class="t-btn t-btn-blue" href="{{ route('admin.user.create') }}">Add New User</a>
-                    {{-- <a class="t-btn t-btn-blue" href="#">Add New User</a> --}}
                 </div>
                 <div class="table-responsive">
                 <table class="table table-striped ">
@@ -89,12 +87,11 @@
                             </td>
 
                             <td>
-                                <a class="btn btn-sm btn-success" href="{{ route('admin.user.edit', $user->id) }}">Edit</a>
-                                <form id="deleteForm{{ $user->id }}" action="{{ route('admin.user.destroy', $user->id) }}" method="POST" style="display:inline-block;">
+                                <form id="deleteForm{{ $user->id }}" action="{{route('admin.trash.undo',$user->id) }}" method="post" style="display:inline-block;">
                                     @csrf
-                                    @method('DELETE')
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $user->id }})">Delete</button>
-                                </form>                                
+                                    @method('POST')
+                                    <button type="button" class="btn btn-sm btn-warning" onclick="undo({{ $user->id }})">Undo</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -106,16 +103,16 @@
 @endsection
 
 <script>
-    function confirmDelete(userId) {
-        console.log(userId);
+    function undo(userId) {
+    console.log(userId);
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            text: "You won't be able to revert User!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Yes, revert User!'
         }).then((result) => {
             if (result.isConfirmed) {
                 document.getElementById('deleteForm' + userId).submit();

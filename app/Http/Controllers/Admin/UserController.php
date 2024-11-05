@@ -15,7 +15,8 @@ class UserController extends Controller
     // Display a listing of the users
     public function index()
     {
-        $users = User::all(); // Fetch all users from the database
+        $users = User::whereNull('deleted_at')->get();
+        // $users = User::all(); // Fetch all users from the database
         return view('Dashboard.admin.user.index', compact('users')); // Return the view with users data
     }
 
@@ -278,6 +279,6 @@ public function store(Request $request)
         $user = User::findOrFail($id); // Find the user by ID
         $user->delete(); // Delete the user
 
-        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully!');
+        return redirect()->route('admin.user.index')->with('success', 'User deleted successfully!');
     }
 }

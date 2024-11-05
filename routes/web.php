@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\RentToWhoController;
 use App\Http\Controllers\Auth\TenantAuthController;
 use App\Http\Controllers\Auth\LandlordAuthController;
 use App\Http\Controllers\LandLord\PropertyController;
-
+use App\Http\Controllers\TrashController;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,6 +137,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('{category}', [CategoryController::class, 'update'])->name('update');
         Route::delete('{category}', [CategoryController::class, 'destroy'])->name('destroy');
     });
+
+    // Trash
+    Route::prefix('trash')->name('trash.')->group(function () {
+        Route::get('/index', [TrashController::class, 'index'])->name('index');
+        Route::post('{user}/undo', [TrashController::class, 'undo'])->name('undo'); // Fixed to reference 'user'
+    });
+
     //user
     Route::prefix('user')->name('user.')->group(function () {
         Route::get('/index', [UserController::class, 'index'])->name('index');
@@ -147,7 +154,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('{user}', [UserController::class, 'destroy'])->name('destroy'); // Fixed to reference 'user'
     });
 
-// RentToWho
+    // RentToWho
         Route::prefix('rent-to-who')->name('rent-to-who.')->group(function () {
         Route::get('/', [RentToWhoController::class, 'index'])->name('index');
         Route::get('create', [RentToWhoController::class, 'create'])->name('create');
