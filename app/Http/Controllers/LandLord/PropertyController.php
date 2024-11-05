@@ -127,7 +127,7 @@ class PropertyController extends Controller
         // Validate the request data
         $validated = $request->validate([
             'images' => 'required|array|min:3|max:50',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4048',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:8048',
             'name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'category' => 'required|integer',

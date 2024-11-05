@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Auth\AuhController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Admin\PetController;
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\RentToWhoController;
 use App\Http\Controllers\Auth\TenantAuthController;
@@ -126,6 +127,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('{pet}/edit', [PetController::class, 'edit'])->name('edit');
         Route::post('{pet}', [PetController::class, 'update'])->name('update');
         Route::delete('{pet}', [PetController::class, 'destroy'])->name('destroy');
+    });
+    //category
+    Route::prefix('category')->name('category.')->group(function () {
+        Route::get('/', [CategoryController::class, 'index'])->name('index');
+        Route::get('create', [CategoryController::class, 'create'])->name('create');
+        Route::post('/', [CategoryController::class, 'store'])->name('store');
+        Route::get('{pet}/edit', [CategoryController::class, 'edit'])->name('edit');
+        Route::post('{pet}', [CategoryController::class, 'update'])->name('update');
+        Route::delete('{pet}', [CategoryController::class, 'destroy'])->name('destroy');
     });
     //user
     Route::prefix('user')->name('user.')->group(function () {
