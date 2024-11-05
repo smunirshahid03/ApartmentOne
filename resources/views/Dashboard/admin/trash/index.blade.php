@@ -19,6 +19,25 @@
         width: 30% !important;
         text-align: left;
     }
+
+
+    .box-inline {
+    display: flex;
+    width: 60%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+    padding: 0px 0 20px 0;
+}
+
+a.t-btn {
+    width: 210px;
+}
+
+.box-inline form {
+    margin: 0 !important;
+}
 </style>
 
 @section('content')
@@ -33,8 +52,20 @@
                     </div>
                 @endif
                 <div class="profile-basic-info-form">
+                   <div class="box-inline">
                     <h3>Users</h3>
+                    <form action="{{ route('admin.trash.search') }}" method="GET" class="mb-4">
+                        <div class="input-group">
+                            <input type="text" name="search" class="form-control" placeholder="Search users..."
+                                value="{{ request('search') }}">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </form>
                 </div>
+                   </div>
+                   <!-- Search Form -->
+                {{-- <form action="#" method="GET" class="mb-4"> --}}
+
                 <div class="table-responsive">
                 <table class="table table-striped ">
                     <tr>
@@ -96,6 +127,9 @@
                         </tr>
                     @endforeach
                 </table>
+            </div>
+            <div class="pagination justify-content-center">
+                {{ $users->onEachSide(1)->links('pagination::bootstrap-5') }}
             </div>
             </div>
         </div>

@@ -141,12 +141,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Trash
     Route::prefix('trash')->name('trash.')->group(function () {
         Route::get('/index', [TrashController::class, 'index'])->name('index');
+        Route::get('/search', [TrashController::class, 'search'])->name('search');
         Route::post('{user}/undo', [TrashController::class, 'undo'])->name('undo'); // Fixed to reference 'user'
     });
 
     //user
     Route::prefix('user')->name('user.')->group(function () {
         Route::get('/index', [UserController::class, 'index'])->name('index');
+        Route::get('/search', [UserController::class, 'search'])->name('search');
         Route::get('create', [UserController::class, 'create'])->name('create');
         Route::post('/', [UserController::class, 'store'])->name('store');
         Route::get('{user}/edit', [UserController::class, 'edit'])->name('edit');

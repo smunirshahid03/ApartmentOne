@@ -15,7 +15,7 @@ class UserController extends Controller
     // Display a listing of the users
     public function index()
     {
-        $users = User::whereNull('deleted_at')->orderBy('id', 'DESC')->get();
+        $users = User::whereNull('deleted_at')->orderBy('id', 'DESC')->paginate(10);
         // $users = User::all(); // Fetch all users from the database
         return view('Dashboard.admin.user.index', compact('users')); // Return the view with users data
     }
@@ -281,4 +281,30 @@ public function store(Request $request)
 
         return redirect()->route('admin.user.index')->with('success', 'User deleted successfully!');
     }
+
+    public function search(Request $request)
+    {
+        // Retrieve the search value from the request
+        $searchValue = $request->input('search');
+
+        // Search the users table for matching values in name, email, phone, city, etc.
+        $query = User::whereNull('deleted_at')
+            ->where(function ($q) use ($searchValue) {
+                $q->where('name', 'LIKE', '%' . $searchValue . '%')
+                    ->orWhere('email', 'LIKE', '%' . $searchValue . '%')
+                    ->orWhere('phone', 'LIKE', '%' . $searchValue . '%')
+                    ->orWhere('city', 'LIKE', '%' . $searchValue . '%')
+                    ->orWhere('country', 'LIKE', '%' . $searchValue . '%')
+                    ->orWhere('state', 'LIKE', '%' . $searchValue . '%')
+                    ->orWhere('postal_code', 'LIKE', '%' . $searchValue . '%')
+                    ->orWhereDate('date_of_birth', $searchValue);
+            });
+
+        // Paginate the results
+        $users = $query->orderBy('id', 'DESC')->paginate(10);
+
+        // Return view with search results
+        return view('Dashboard.admin.user.index', compact('users'));
+    }
+
 }
