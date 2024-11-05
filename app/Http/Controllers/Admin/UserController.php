@@ -15,7 +15,7 @@ class UserController extends Controller
     // Display a listing of the users
     public function index()
     {
-        $users = User::whereNull('deleted_at')->get();
+        $users = User::whereNull('deleted_at')->orderBy('id', 'DESC')->get();
         // $users = User::all(); // Fetch all users from the database
         return view('Dashboard.admin.user.index', compact('users')); // Return the view with users data
     }

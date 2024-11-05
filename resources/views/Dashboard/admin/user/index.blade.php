@@ -1,12 +1,12 @@
 @extends('Dashboard.Layouts.master_dashboard')
 
 <style>
-    .dashboard-main .left-panel .left-panel-menu ul li a.user {
+    .dashboard-main .left-panel .left-panel-menu ul li a.users {
         background-color: white;
         color: #414141;
     }
 
-    .dashboard-main .left-panel .left-panel-menu ul li a.user svg path {
+    .dashboard-main .left-panel .left-panel-menu ul li a.users svg path {
         fill: #414141 !important;
     }
 
@@ -94,7 +94,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $user->id }})">Delete</button>
-                                </form>                                
+                                </form>
                             </td>
                         </tr>
                     @endforeach
