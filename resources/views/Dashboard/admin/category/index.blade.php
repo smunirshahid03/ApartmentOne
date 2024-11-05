@@ -40,7 +40,14 @@
 
 
                     <h3>Category</h3>
-                    <a class="t-btn t-btn-blue" href="#">Add New</a>
+                    {{-- <a class="t-btn t-btn-blue" href="#">Add New</a> --}}
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        {{-- <label for="category">Category</label> --}}
+                        <!-- Button to trigger the modal -->
+                        <button type="button" id="create-category" class="fa fa-plus btn btn-primary btn-sm px-3 py-2"
+                            style="white-space: nowrap" data-bs-toggle="modal" data-bs-target="#categoryModal">Add
+                            Category</button>
+                    </div>
                     {{-- <a class="t-btn t-btn-blue" href="{{ route('admin.pets.create') }}">Add New</a> --}}
                 </div>
                 <table class="table table-striped">
@@ -70,6 +77,27 @@
                 </table>
             </div>
         </div>
+    </div>
+    <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="categoryModalLabel">Add New Category</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoryForm">
+                        <div class="mb-3">
+                            <label for="new-category" class="form-label">Category Name</label>
+                            <input type="text" class="form-control" id="new-category" placeholder="Enter category name"
+                                required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Category</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 @endsection
 <script>
